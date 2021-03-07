@@ -12,6 +12,7 @@ namespace WindowsFormsApp
 
         private DateTime dateOfTweet;
 
+
         private string text;
 
         public Coordinates Location { get => location; set => location = value; }
@@ -23,6 +24,7 @@ namespace WindowsFormsApp
             this.location = new Coordinates(location);
             this.dateOfTweet = Convert.ToDateTime(date);
             this.text = text;
+            
         }
     }
 }
