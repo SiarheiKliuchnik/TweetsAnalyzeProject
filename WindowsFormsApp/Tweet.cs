@@ -14,6 +14,16 @@ namespace WindowsFormsApp
 
         private string text;
 
+        private List<Sentence> sentences = new List<Sentence>();
+        public List<Sentence> Sentences_
+        {
+            get
+            {
+                return this.sentences;
+            }
+        }
+
+
         public Coordinates Location { get => location; set => location = value; }
         public DateTime DateOfTweet { get => dateOfTweet; set => dateOfTweet = value; }
         public string Text { get => text; set => text = value; }
@@ -29,9 +39,9 @@ namespace WindowsFormsApp
         {
             char[] EndOfSentences = { '.', '?', '!' };
             Sentence sentence = new Sentence();
-            text.Content = text.Content.Trim();
-            text.Content = System.Text.RegularExpressions.Regex.Replace(text.Content, @" +", " ").Replace("\r", "");
-            foreach (char symbol in text.Content)
+            text = text.Trim();
+            text = System.Text.RegularExpressions.Regex.Replace(text, @" +", " ").Replace("\r", "");
+            foreach (char symbol in text)
             {
                 if (symbol == '\r' || symbol == '\n') continue;
                 if (Array.Exists(EndOfSentences, element => element == symbol))
