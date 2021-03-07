@@ -31,6 +31,11 @@ namespace WindowsFormsApp
                 {
                     tweets.Add(GetTweet(location.Match(str), date.Match(str), text.Match(str)));
                 }
+
+                foreach (var tweet in tweets)
+                {
+                    TextParse(tweet);
+                }
             }
             catch (Exception ex)
             {
@@ -42,6 +47,54 @@ namespace WindowsFormsApp
             Tweet tweet = new Tweet(location.Value, date.Value, str.Value);
 
             return tweet;
+        }
+
+        public static void TextParse(Tweet tweet)
+        {
+            char[] EndOfSentences = { '.', '?', '!' };
+            Sentence sentence = new Sentence();
+            tweet.Text = tweet.Text.Trim();
+            tweet.Text = System.Text.RegularExpressions.Regex.Replace(tweet.Text, @" +", " ").Replace("\r", "");
+            foreach (char symbol in tweet.Text)
+            {
+                if (symbol == '\r' || symbol == '\n') continue;
+                if (Array.Exists(EndOfSentences, element => element == symbol))
+                {
+                    sentence.Content += symbol;
+
+                    tweet.sentences.Add(new Sentence(sentence));
+                    sentence = new Sentence();
+                }
+                else
+                {
+                    sentence.Content += symbol;
+                }
+            }
+            foreach (var Tsentence in tweet.sentences)
+            {
+                Tsentence.Content = Tsentence.Content.Trim();
+                Tsentence.Content = System.Text.RegularExpressions.Regex.Replace(Tsentence.Content, @" +", " ");
+                SentenceParser(Tsentence);
+            }
+        }
+        public static void SentenceParser(Sentence sentence)
+        {
+            char[] EndOfWords = { '.', '!', '?', ' ', ':', ';', ',' };
+            Word word = new Word();
+            foreach (char symbol in sentence.Content)
+            {
+                if (Array.Exists(EndOfWords, element => element == symbol))
+                {
+                    if (word.Content == null) continue;
+                    word.PunctuationMark_ = symbol;
+                    sentence.Words_.Add(new Word(word));
+                    word = new Word();
+                }
+                else
+                {
+                    word.Content += symbol;
+                }
+            }
         }
     }
 }
