@@ -16,7 +16,7 @@ namespace WindowsFormsApp
         {
             coordinate.Trim((char[])(new char[] { '[', ']' }));
             string[] latlong = coordinate.Split(',');
-            longtitude =Convert.ToDouble(latlong[0].Replace('.',','));
+            longtitude = Convert.ToDouble(latlong[0].Replace('.',','));
             latitude = Convert.ToDouble(latlong[1].Replace('.', ','));
         }
 
