@@ -16,7 +16,6 @@ namespace WindowsFormsApp
         private Regex location = new Regex(@"[-]?[0-9]+[.][0-9]+[,][\s][-]?[0-9]+[.][0-9]+");
         private Regex date = new Regex(@"[0-9]{4}([-][0-9]{2}){2}.([0-9][0-9][:]){2}[0-9][0-9]");
         private Regex text = new Regex(@"[\w*\/*\p{Zs}*\p{P}*]+$", RegexOptions.IgnoreCase);
-
         public DataBase()
         {
             
@@ -35,7 +34,13 @@ namespace WindowsFormsApp
                 foreach (var tweet in tweets)
                 {
                     TextParse(tweet);
+
+                    foreach (var sentence in tweet.sentences)
+                    {
+                        SentenceParser(sentence);
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -51,30 +56,17 @@ namespace WindowsFormsApp
 
         public static void TextParse(Tweet tweet)
         {
-            char[] EndOfSentences = { '.', '?', '!' };
-            Sentence sentence = new Sentence();
-            tweet.Text = tweet.Text.Trim();
-            tweet.Text = System.Text.RegularExpressions.Regex.Replace(tweet.Text, @" +", " ").Replace("\r", "");
-            foreach (char symbol in tweet.Text)
-            {
-                if (symbol == '\r' || symbol == '\n') continue;
-                if (Array.Exists(EndOfSentences, element => element == symbol))
-                {
-                    sentence.Content += symbol;
+            char[] EndOfSentences = { '.', '?', '!', '\r', '\n' };
 
-                    tweet.sentences.Add(new Sentence(sentence));
-                    sentence = new Sentence();
-                }
-                else
-                {
-                    sentence.Content += symbol;
-                }
-            }
-            foreach (var Tsentence in tweet.sentences)
+            tweet.Text = tweet.Text.Trim();
+            tweet.Text = System.Text.RegularExpressions.Regex.Replace(tweet.Text, @" +", " ");
+            Regex rx = new Regex(@"(?<=[\.!\? ])\s+");
+            string[] sentences = rx.Split(tweet.Text);
+            foreach (var item in sentences)
             {
-                Tsentence.Content = Tsentence.Content.Trim();
-                Tsentence.Content = System.Text.RegularExpressions.Regex.Replace(Tsentence.Content, @" +", " ");
-                SentenceParser(Tsentence);
+                Sentence sentence = new Sentence();
+                sentence.Content = item;
+                tweet.sentences.Add(sentence);
             }
         }
         public static void SentenceParser(Sentence sentence)

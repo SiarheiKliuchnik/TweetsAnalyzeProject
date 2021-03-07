@@ -41,5 +41,10 @@ namespace WindowsFormsApp
             this.content = word.content;
             this.PunctuationMark = word.PunctuationMark;
         }
+
+        public override string ToString()
+        {
+            return content;
+        }
     }
 }

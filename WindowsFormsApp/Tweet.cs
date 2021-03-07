@@ -28,5 +28,10 @@ namespace WindowsFormsApp
             this.text = text;
         }
 
+        public override string ToString()
+        {
+            return text.ToString();
+        }
+
     }
 }

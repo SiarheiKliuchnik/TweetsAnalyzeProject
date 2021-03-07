@@ -40,5 +40,9 @@ namespace WindowsFormsApp
             this.content = sentence.content;
             this.words = new List<Word>(sentence.words);
         }
+        public override string ToString()
+        {
+            return content;
+        }
     }
 }
