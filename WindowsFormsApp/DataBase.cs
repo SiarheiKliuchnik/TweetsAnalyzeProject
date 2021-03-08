@@ -12,6 +12,7 @@ namespace WindowsFormsApp
     class DataBase
     {
         public List<Tweet> tweets = new List<Tweet>();
+        public Dictionary<char, Dictionary<string, double>> sentiments = new Dictionary<char, Dictionary<string, double>>(SentimentsParser.Parse());
 
         private Regex location = new Regex(@"[-]?[0-9]+[.][0-9]+[,][\s][-]?[0-9]+[.][0-9]+");
         private Regex date = new Regex(@"[0-9]{4}([-][0-9]{2}){2}.([0-9][0-9][:]){2}[0-9][0-9]");
