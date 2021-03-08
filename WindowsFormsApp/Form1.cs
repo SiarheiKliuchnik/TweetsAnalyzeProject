@@ -37,7 +37,7 @@ namespace WindowsFormsApp
                 };
                 dataGridView1.Rows.Add(mas);
             }
-
+            JsonParser.Parse();
         }
 
     }
