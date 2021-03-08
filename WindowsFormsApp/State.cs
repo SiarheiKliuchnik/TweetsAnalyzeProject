@@ -12,7 +12,7 @@ namespace WindowsFormsApp
         { get; set; }
         public float Weigth
         { get; set; }
-        public List<List<List<Coordinates>>> Polygons;
+        public List<List<List<Coordinates>>> Polygons
         { get; set; }
     }
 }
