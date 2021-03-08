@@ -9,9 +9,14 @@ namespace WindowsFormsApp
 {
     internal class State
     {
+        public State()
+        {
+           Tweets = new List<Tweet>();
+            Polygons = new List<List<List<Coordinates>>>();
+        }
+        public string Postcode { get; set; }
         public float Weight { get; set; }
-        public List<Tweet> Tweets {get; set;}
-        [JsonProperty("Polygons")]
-        public List<List<List<double>>> Polygons { get; set; }
+        public List<Tweet> Tweets { get; set; }
+        public List<List<List<Coordinates>>> Polygons { get; set; }
     }
 }
