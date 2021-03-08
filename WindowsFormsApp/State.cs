@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp
 {
-    public class State
+    internal class State
     {
-        public List<Tweet> Tweets
-        { get; set; }
-        public float Weigth
-        { get; set; }
-        public List<List<List<Coordinates>>> Polygons
-        { get; set; }
+        public float Weight { get; set; }
+        public List<Tweet> Tweets {get; set;}
+        [JsonProperty("Polygons")]
+        public List<List<List<double>>> Polygons { get; set; }
     }
 }
