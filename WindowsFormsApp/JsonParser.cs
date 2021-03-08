@@ -12,7 +12,7 @@ namespace WindowsFormsApp
 {
     static class JsonParser
     {
-        public static List<State> Parse(string path = "states.json")
+        public static List<State> Parse(string path = "..\\..\\..\\Data\\states.json")
         {
             string jsonString = new StreamReader(path).ReadToEnd();
             JObject jsonStates = JObject.Parse(jsonString);
