@@ -78,6 +78,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Data Layer\Data\sentiments.csv" />
+    <None Include="Data Layer\Data\states.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -93,8 +95,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data Layer\Data\" />
     <Folder Include="Service Layer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data Layer\Data\cali_tweets2014.txt" />
+    <Content Include="Data Layer\Data\family_tweets2014.txt" />
+    <Content Include="Data Layer\Data\football_tweets2014.txt" />
+    <Content Include="Data Layer\Data\high_school_tweets2014.txt" />
+    <Content Include="Data Layer\Data\movie_tweets2014.txt" />
+    <Content Include="Data Layer\Data\shopping_tweets2014.txt" />
+    <Content Include="Data Layer\Data\snow_tweets2014.txt" />
+    <Content Include="Data Layer\Data\texas_tweets2014.txt" />
+    <Content Include="Data Layer\Data\weekend_tweets2014.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
