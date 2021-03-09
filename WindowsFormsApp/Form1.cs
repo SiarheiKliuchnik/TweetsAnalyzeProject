@@ -27,7 +27,7 @@ namespace WindowsFormsApp
 
             DataBase dataBase = new DataBase();
 
-            dataBase.ParseTweets("cali_tweets.txt");
+            dataBase.ParseTweets("..\\..\\..\\Data\\cali_tweets.txt");
             foreach (var tweet in dataBase.tweets)
             {
                 string[] mas = new string[]
@@ -38,7 +38,7 @@ namespace WindowsFormsApp
                 };
                 dataGridView1.Rows.Add(mas);
             }
-
+            //JsonParser.Parse();
         }
 
     }

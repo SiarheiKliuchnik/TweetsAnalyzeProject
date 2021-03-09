@@ -15,6 +15,9 @@ namespace WindowsFormsApp
 
         private string text;
 
+        public List<Sentence> sentences = new List<Sentence>();
+
+
         public Coordinates Location { get => location; set => location = value; }
         public DateTime DateOfTweet { get => dateOfTweet; set => dateOfTweet = value; }
         public string Text { get => text; set => text = value; }
@@ -26,5 +29,11 @@ namespace WindowsFormsApp
             this.text = text;
             
         }
+
+        public override string ToString()
+        {
+            return text.ToString();
+        }
+
     }
 }
