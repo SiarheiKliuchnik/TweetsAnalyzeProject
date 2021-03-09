@@ -9,21 +9,15 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    class DataBase
+    static class TweetParser
     {
-        public List<Tweet> tweets = new List<Tweet>();
-        public Dictionary<char, Dictionary<string, double>> sentiments = new Dictionary<char, Dictionary<string, double>>(SentimentsParser.Parse());
-
-        private Regex location = new Regex(@"[-]?[0-9]+[.][0-9]+[,][\s][-]?[0-9]+[.][0-9]+");
-        private Regex date = new Regex(@"[0-9]{4}([-][0-9]{2}){2}.([0-9][0-9][:]){2}[0-9][0-9]");
-        private Regex text = new Regex(@"[\w*\/*\p{Zs}*\p{P}*]+$", RegexOptions.IgnoreCase);
-        public DataBase()
+      
+        public static List<Tweet> ParseTweets(string path)
         {
-            
-        }
-
-        public void ParseTweets(string path)
-        {
+            List<Tweet> tweets = new List<Tweet>();
+            Regex location = new Regex(@"[-]?[0-9]+[.][0-9]+[,][\s][-]?[0-9]+[.][0-9]+");
+            Regex date = new Regex(@"[0-9]{4}([-][0-9]{2}){2}.([0-9][0-9][:]){2}[0-9][0-9]");
+            Regex text = new Regex(@"[\w*\/*\p{Zs}*\p{P}*]+$", RegexOptions.IgnoreCase);
             try
             {
                 string[] massString = File.ReadAllLines(path);
@@ -41,14 +35,15 @@ namespace WindowsFormsApp
                         SentenceParser(sentence);
                     }
                 }
-
+                return tweets;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return null;
             }
         }
-        private Tweet GetTweet(Match location, Match date, Match str)
+        private static Tweet GetTweet(Match location, Match date, Match str)
         {
             Tweet tweet = new Tweet(location.Value, date.Value, str.Value);
 
