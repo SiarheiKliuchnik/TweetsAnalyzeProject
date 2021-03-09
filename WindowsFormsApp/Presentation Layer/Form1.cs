@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GMap.NET.WindowsForms;
 
 namespace WindowsFormsApp
 {
@@ -27,7 +26,7 @@ namespace WindowsFormsApp
 
             DataBase dataBase = new DataBase();
 
-            dataBase.ParseTweets("..\\..\\..\\Data\\cali_tweets.txt");
+            dataBase.ParseTweet(@"..\..\Data Layer\Data\cali_tweets2014.txt");
             foreach (var tweet in dataBase.tweets)
             {
                 string[] mas = new string[]
