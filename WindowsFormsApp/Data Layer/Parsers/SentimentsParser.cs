@@ -10,7 +10,7 @@ namespace WindowsFormsApp
 {
     static class SentimentsParser
     {
-            public static Dictionary<char, Dictionary<string, double>> Parse(string path = "..\\..\\..\\Data\\sentiments.csv")
+            public static Dictionary<char, Dictionary<string, double>> Parse(string path = @"..\..\Data Layer\Data\sentiments.csv")
             {
                 StreamReader sr = new StreamReader(path);
                 Dictionary<char, Dictionary<string, double>> dictFin = new Dictionary<char, Dictionary<string, double>>();
