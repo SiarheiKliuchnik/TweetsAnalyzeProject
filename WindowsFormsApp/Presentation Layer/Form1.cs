@@ -38,14 +38,7 @@ namespace WindowsFormsApp
                 dataGridView1.Rows.Add(mas);
             }
             //JsonParser.Parse();
-
-            //map.MapProvider = GMapProviders.GoogleMap;
-            //map.Position = new GMap.NET.PointLatLng(53.68, 23.84);
         }
 
-        private void gMapControl1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
