@@ -11,7 +11,11 @@ namespace WindowsFormsApp
         private double latitude { get; set; }
 
         private double longtitude { get; set; }
-
+        public Coordinates(double x, double y)
+        {
+            this.latitude = x;
+            this.longtitude = y;
+        }
         public Coordinates(string coordinate)
         {
             coordinate.Trim((char[])(new char[] { '[', ']' }));

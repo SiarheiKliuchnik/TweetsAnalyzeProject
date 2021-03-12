@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class Form1 : Form
+    partial class Form1 : Form
     {
         
         public Form1()
@@ -26,7 +26,7 @@ namespace WindowsFormsApp
 
             DataBase dataBase = new DataBase();
 
-            dataBase.ParseTweets(@"..\..\SourceFiles\cali_tweets.txt");
+            dataBase.ParseTweet(@"..\..\Data Layer\Data\cali_tweets2014.txt");
             foreach (var tweet in dataBase.tweets)
             {
                 string[] mas = new string[]
@@ -37,7 +37,7 @@ namespace WindowsFormsApp
                 };
                 dataGridView1.Rows.Add(mas);
             }
-
+            //JsonParser.Parse();
         }
 
     }

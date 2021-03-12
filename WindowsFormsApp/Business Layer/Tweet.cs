@@ -12,7 +12,11 @@ namespace WindowsFormsApp
 
         private DateTime dateOfTweet;
 
+
         private string text;
+
+        public List<Sentence> sentences = new List<Sentence>();
+
 
         public Coordinates Location { get => location; set => location = value; }
         public DateTime DateOfTweet { get => dateOfTweet; set => dateOfTweet = value; }
@@ -23,6 +27,13 @@ namespace WindowsFormsApp
             this.location = new Coordinates(location);
             this.dateOfTweet = Convert.ToDateTime(date);
             this.text = text;
+            
         }
+
+        public override string ToString()
+        {
+            return text.ToString();
+        }
+
     }
 }
