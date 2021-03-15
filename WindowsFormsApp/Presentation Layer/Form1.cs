@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,5 +41,15 @@ namespace WindowsFormsApp
             //JsonParser.Parse();
         }
 
+        private void gMapControl1_Load(object sender, EventArgs e)
+        {
+            gMapControl.MapProvider = GMap.NET.MapProviders.YandexMapProvider.Instance;
+            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
+            gMapControl.Position = new GMap.NET.PointLatLng(53.662602, 23.777573);
+            gMapControl.Position = new GMap.NET.PointLatLng(53.66171165567981, 23.778860432738174);
+            gMapControl.MinZoom = 2;
+            gMapControl.MaxZoom = 18;
+            gMapControl.Zoom = 14;
+        }
     }
 }
