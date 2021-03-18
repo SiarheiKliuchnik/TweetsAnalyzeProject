@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,31 +11,25 @@ namespace WindowsFormsApp
 {
     static class SentimentsParser
     {
-            public static Dictionary<char, Dictionary<string, double>> Parse(string path = @"..\..\Data Layer\Data\sentiments.csv")
+        public static Hashtable Parse(out HashSet<string> anyValuableWords, string path = @"..\..\Data Layer\Data\sentiments.csv")
+        {
+            Hashtable htFin = new Hashtable();
+            StreamReader sr = new StreamReader(path);
+            anyValuableWords = new HashSet<string>();
+            while (!sr.EndOfStream)
             {
-                StreamReader sr = new StreamReader(path);
-                Dictionary<char, Dictionary<string, double>> dictFin = new Dictionary<char, Dictionary<string, double>>();
-                while (!sr.EndOfStream)
+                string line = sr.ReadLine();
+                string[] lineData = line.Split(',');
+                string stringValue = lineData[0];
+                double doubleValue = Double.Parse(lineData[1], CultureInfo.InvariantCulture);
+                htFin.Add(stringValue, doubleValue);
+                string[] words = stringValue.Split(' ');
+                foreach (var word in words)
                 {
-                    string line = sr.ReadLine();
-                    string[] lineData = line.Split(',');
-                    Dictionary<string, double> dict = new Dictionary<string, double>();
-                    string stringValue = lineData[0];
-                    double doubleValue = Double.Parse(lineData[1], CultureInfo.InvariantCulture);
-                    dict.Add(stringValue, doubleValue);
-                    if (!dictFin.ContainsKey(lineData[0][0]))
-                    {
-                        dictFin.Add(lineData[0][0], dict);
-                    }
-                    else
-                    {
-                        Dictionary<string, double> newDict = new Dictionary<string, double>();
-                        dictFin.TryGetValue(lineData[0][0], out newDict);
-                        newDict.Add(lineData[0], Double.Parse(lineData[1], CultureInfo.InvariantCulture));
-                        dictFin[lineData[0][0]] = newDict;
-                    }
+                    anyValuableWords.Add(word);
                 }
-                return dictFin;
             }
+            return htFin;
+        }
     }
 }
