@@ -11,7 +11,7 @@ namespace WindowsFormsApp
 {
     static class SentimentsParser
     {
-        public static Hashtable Parse(out HashSet<string> anyValuableWords, string path = @"..\..\Data Layer\Data\sentiments.csv")
+        public static Hashtable Parse(out HashSet<string> anyValuableWords, string path)
         {
             Hashtable htFin = new Hashtable();
             StreamReader sr = new StreamReader(path);
