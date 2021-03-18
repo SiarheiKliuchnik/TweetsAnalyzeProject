@@ -27,7 +27,9 @@ namespace WindowsFormsApp
 
             DataBase dataBase = new DataBase();
 
-            dataBase.ParseTweet(@"..\..\Data Layer\Data\cali_tweets2014.txt");
+            dataBase.ParseTweet(@"..\..\Data Layer\Data\weekend_tweets2014.txt");
+            dataBase.ParseSentiments();
+            dataBase.AnalyseTweets();
             foreach (var tweet in dataBase.tweets)
             {
                 string[] mas = new string[]
