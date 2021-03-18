@@ -6,13 +6,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace WindowsFormsApp
 {
     class DataBase
     {
         public List<Tweet> tweets = new List<Tweet>();
-        public Dictionary<char, Dictionary<string, double>> sentiments = new Dictionary<char, Dictionary<string, double>>(SentimentsParser.Parse());
+        public List<State> states = new List<State>();
+        public Hashtable wordValues = new Hashtable();
+        public HashSet<string> anyValuableWords = new HashSet<string>();
 
         public DataBase()
         {
@@ -22,72 +25,11 @@ namespace WindowsFormsApp
         {
             this.tweets = TweetParser.ParseTweets(path);
         }
-        //public void ParseTweets(string path)
-        //{
-        //    try
-        //    {
-        //        string[] massString = File.ReadAllLines(path);
-        //        foreach (var str in massString)
-        //        {
-        //            tweets.Add(GetTweet(location.Match(str), date.Match(str), text.Match(str)));
-        //        }
-
-        //        foreach (var tweet in tweets)
-        //        {
-        //            TextParse(tweet);
-
-        //            foreach (var sentence in tweet.sentences)
-        //            {
-        //                SentenceParser(sentence);
-        //            }
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
-        //private Tweet GetTweet(Match location, Match date, Match str)
-        //{
-        //    Tweet tweet = new Tweet(location.Value, date.Value, str.Value);
-
-        //    return tweet;
-        //}
-
-        //public static void TextParse(Tweet tweet)
-        //{
-        //    char[] EndOfSentences = { '.', '?', '!', '\r', '\n' };
-
-        //    tweet.Text = tweet.Text.Trim();
-        //    tweet.Text = System.Text.RegularExpressions.Regex.Replace(tweet.Text, @" +", " ");
-        //    Regex rx = new Regex(@"(?<=[\.!\? ])\s+");
-        //    string[] sentences = rx.Split(tweet.Text);
-        //    foreach (var item in sentences)
-        //    {
-        //        Sentence sentence = new Sentence();
-        //        sentence.Content = item;
-        //        tweet.sentences.Add(sentence);
-        //    }
-        //}
-        //public static void SentenceParser(Sentence sentence)
-        //{
-        //    char[] EndOfWords = { '.', '!', '?', ' ', ':', ';', ',' };
-        //    Word word = new Word();
-        //    foreach (char symbol in sentence.Content)
-        //    {
-        //        if (Array.Exists(EndOfWords, element => element == symbol))
-        //        {
-        //            if (word.Content == null) continue;
-        //            word.PunctuationMark_ = symbol;
-        //            sentence.Words_.Add(new Word(word));
-        //            word = new Word();
-        //        }
-        //        else
-        //        {
-        //            word.Content += symbol;
-        //        }
-        //    }
-        //}
+        public void ParseSentiments(string path)
+        {
+        }
+        public void ParseJSON(string path)
+        {
+        }
     }
 }
