@@ -25,11 +25,25 @@ namespace WindowsFormsApp
         {
             this.tweets = TweetParser.ParseTweets(path);
         }
-        public void ParseSentiments(string path)
+        public void ParseSentiments(string path = @"..\..\Data Layer\Data\sentiments.csv")
         {
+            this.wordValues = SentimentsParser.Parse(out this.anyValuableWords, path);
         }
         public void ParseJSON(string path)
         {
+            this.states = JsonParser.Parse(path);
+        }
+
+        public void AnalyseTweets()
+        {
+            this.tweets[0].Analyse(this.wordValues, this.anyValuableWords);
+            for (int i = 1; i<tweets.Count; i++)
+            {
+                if (this.tweets[i].Text.Equals(this.tweets[i - 1].Text))
+                    continue;
+                else
+                    this.tweets[i].Analyse(this.wordValues, this.anyValuableWords);
+            }
         }
     }
 }
