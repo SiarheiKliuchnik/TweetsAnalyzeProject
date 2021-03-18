@@ -66,11 +66,9 @@
     <Compile Include="Data Layer\Parsers\JsonParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Business Layer\Sentence.cs" />
     <Compile Include="Data Layer\Parsers\SentimentsParser.cs" />
     <Compile Include="Business Layer\State.cs" />
     <Compile Include="Business Layer\Tweet.cs" />
-    <Compile Include="Business Layer\Word.cs" />
     <Compile Include="Data Layer\Parsers\TweetParser.cs" />
     <EmbeddedResource Include="Presentation Layer\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

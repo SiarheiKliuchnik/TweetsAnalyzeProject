@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,18 @@ namespace WindowsFormsApp
 
         private DateTime dateOfTweet;
 
-
         private string text;
 
-        public List<Sentence> sentences = new List<Sentence>();
+        private float weight;
 
+       
 
         public Coordinates Location { get => location; set => location = value; }
         public DateTime DateOfTweet { get => dateOfTweet; set => dateOfTweet = value; }
         public string Text { get => text; set => text = value; }
+        public float Weight { get => weight; set => weight = value; }
+
+        public List<string> valueableWords = new List<string>();
 
         public Tweet(string location, string date, string text)
         {
@@ -30,6 +34,52 @@ namespace WindowsFormsApp
             
         }
 
+        public void Analyse(Hashtable wordValues, HashSet<string> anyValuableWords)
+        {
+            float value = 0;
+            string[] phrases = this.Text.ToLower().Split(',', '.', '?', '!', ':', ';', '"', '=', '+', '(', ')');
+            foreach (string phrase in phrases)
+            {
+                string[] words = phrase.Trim().Split(' ');
+                int index = 0;
+                while (index < words.Length)
+                {
+                    string newRow = words[index];
+                    if (anyValuableWords.Contains(newRow))
+                    {
+                        value += AnalysePhrase(newRow, words, index, out index, anyValuableWords, wordValues);
+                    }
+                    else
+                        index++;
+                }
+            }
+            this.Weight = value;
+        }
+
+        public float AnalysePhrase(string newRow, string[] words, int curInd, out int nextInd, HashSet<string> anyValuableWords, Hashtable wordValues)
+        {
+            string toReturn = newRow;
+            nextInd = curInd + 1;
+            while (curInd < words.Length)
+            {
+                if (wordValues.ContainsKey(newRow))
+                {
+                    toReturn = newRow;
+                    nextInd = curInd + 1;
+                }
+                if (++curInd < words.Length && anyValuableWords.Contains(words[curInd]))
+                {
+                    newRow += ' ' + words[curInd];
+                }
+                else
+                    break;
+            }
+            if (wordValues.ContainsKey(toReturn))
+            {
+                valueableWords.Add(toReturn);
+            }
+            return Convert.ToSingle(wordValues[toReturn]);
+        }
         public override string ToString()
         {
             return text.ToString();
