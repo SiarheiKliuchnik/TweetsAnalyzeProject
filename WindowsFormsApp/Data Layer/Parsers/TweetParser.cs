@@ -23,7 +23,8 @@ namespace WindowsFormsApp
                 string[] massString = File.ReadAllLines(path);
                 foreach (var str in massString)
                 {
-                    tweets.Add(GetTweet(location.Match(str), date.Match(str), text.Match(str)));
+                     tweets.Add(GetTweet(location.Match(str), date.Match(str), text.Match(str)));
+                   // tweets.Add(ReturnTweet(str));
                 }
 
                 foreach (var tweet in tweets)
@@ -42,6 +43,13 @@ namespace WindowsFormsApp
                 MessageBox.Show(ex.Message);
                 return null;
             }
+        }
+
+        private static Tweet ReturnTweet(string line)
+        {
+            string[] sentences = line.Split('\t');
+            Tweet tweet = new Tweet(sentences[0].Trim('[', ']'), sentences[2], sentences[3]);
+            return tweet;
         }
         private static Tweet GetTweet(Match location, Match date, Match str)
         {
