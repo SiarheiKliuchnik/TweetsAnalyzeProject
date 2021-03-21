@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Tweet/Class1.cs
+/Tweet/Tweet.csproj
+/WindowsFormsApp/Data Layer/Data/tweets2014.txt
