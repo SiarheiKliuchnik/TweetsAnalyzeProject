@@ -27,7 +27,7 @@ namespace WindowsFormsApp
 
             DataBase dataBase = new DataBase();
 
-            dataBase.ParseTweet(@"..\..\Data Layer\Data\tweets2014.txt");
+            dataBase.ParseTweet(@"..\..\Data Layer\Data\cali_tweets2014.txt");
             foreach (var tweet in dataBase.tweets)
             {
                 string[] mas = new string[]
@@ -37,11 +37,13 @@ namespace WindowsFormsApp
                     tweet.Text
                 };
                 dataGridView1.Rows.Add(mas);
+
+
+                //JsonParser.Parse();
             }
-            //JsonParser.Parse();
         }
 
-        private void gMapControl1_Load(object sender, EventArgs e)
+            private void gMapControl1_Load(object sender, EventArgs e)
         {
             gMapControl.MapProvider = GMap.NET.MapProviders.YandexMapProvider.Instance;
             GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;

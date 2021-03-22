@@ -15,16 +15,12 @@ namespace WindowsFormsApp
         public static List<Tweet> ParseTweets(string path)
         {
             List<Tweet> tweets = new List<Tweet>();
-            //Regex location = new Regex(@"[-]?[0-9]+[.][0-9]+[,][\s][-]?[0-9]+[.][0-9]+");
-            //Regex date = new Regex(@"[0-9]{4}([-][0-9]{2}){2}.([0-9][0-9][:]){2}[0-9][0-9]");
-            //Regex text = new Regex(@"[\w*\/*\p{Zs}*\p{P}*]+$", RegexOptions.IgnoreCase);
             try
             {
                 string[] massString = File.ReadAllLines(path);
                 foreach (var str in massString)
                 {
-                  //  tweets.Add(GetTweet(location.Match(str), date.Match(str), text.Match(str)));
-                     tweets.Add(ReturnTweet(str));
+                     tweets.Add(GetTweet(str));
                 }
 
                 foreach (var tweet in tweets)
@@ -45,16 +41,10 @@ namespace WindowsFormsApp
             }
         }
 
-        private static Tweet ReturnTweet(string line)
+        private static Tweet GetTweet(string line)
         {
             string[] sentences = line.Split('\t');
             Tweet tweet = new Tweet(sentences[0].Trim('[', ']'), sentences[2], sentences[3]);
-            return tweet;
-        }
-        private static Tweet GetTweet(Match location, Match date, Match str)
-        {
-            Tweet tweet = new Tweet(location.Value, date.Value, str.Value);
-
             return tweet;
         }
 
