@@ -72,7 +72,7 @@ namespace WindowsFormsApp
         }
         public static void SentenceParser(Sentence sentence)
         {
-            char[] EndOfWords = { '.', '!', '?', ' ', ':', ';', ',' };
+            char[] EndOfWords = { '.', '!', '?', ' ', ':', ';', ',', '"' }; //
             Word word = new Word();
             foreach (char symbol in sentence.Content)
             {

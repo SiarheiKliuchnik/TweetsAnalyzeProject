@@ -14,12 +14,15 @@ namespace WindowsFormsApp
 
         private string text;
 
+        private double weight; 
+
         public List<Sentence> sentences = new List<Sentence>();
 
 
         public Coordinates Location { get => location; set => location = value; }
         public DateTime DateOfTweet { get => dateOfTweet; set => dateOfTweet = value; }
         public string Text { get => text; set => text = value; }
+        public double Weight { get => weight; set => weight = value; }
 
         public Tweet(string location, string date, string text)
         {
@@ -33,5 +36,21 @@ namespace WindowsFormsApp
             return text.ToString();
         }
 
+        private void CalculateTweetWeight(Dictionary<char, Dictionary<string, double>> sentiments)
+        {
+            foreach (var s in this.sentences)
+            {
+                for (int i = 0; i < s.Words_.Count; i++)
+                {
+                    Dictionary<string, double> dict = new Dictionary<string, double>();
+                    double val = 0;
+
+                    if (sentiments.TryGetValue(s.Words_[i].Content[0], out dict))
+                    {
+
+                    }
+                }
+            }
+        }
     }
 }
