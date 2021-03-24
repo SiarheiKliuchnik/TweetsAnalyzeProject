@@ -8,25 +8,30 @@ namespace WindowsFormsApp
 {
     internal class Coordinates
     {
-        private double latitude { get; set; }
+        private double latitude;
+        public double Latitude
+        { get => latitude; set => latitude = value; }
 
         private double longtitude { get; set; }
+
+        public double Longtitude
+        { get => longtitude; set => longtitude = value; }
         public Coordinates(double x, double y)
         {
-            this.latitude = x;
-            this.longtitude = y;
+            Longtitude = x;
+            Latitude = y;
         }
         public Coordinates(string coordinate)
         {
             coordinate.Trim((char[])(new char[] { '[', ']' }));
             string[] latlong = coordinate.Split(',');
-            longtitude = Convert.ToDouble(latlong[0].Replace('.',','));
-            latitude = Convert.ToDouble(latlong[1].Replace('.', ','));
+            Longtitude = Convert.ToDouble(latlong[0].Replace('.',','));
+            Latitude = Convert.ToDouble(latlong[1].Replace('.', ','));
         }
 
         public override string ToString()
         {
-            return longtitude.ToString() + " " + latitude.ToString();
+            return Longtitude.ToString() + " " + Latitude.ToString();
         }
     }
 }
