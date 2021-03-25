@@ -47,13 +47,15 @@ namespace WindowsFormsApp
                     string newRow = words[index];
                     if (anyValuableWords.Contains(newRow))
                     {
-                        value += AnalysePhrase(newRow, words, index, out index, anyValuableWords, wordValues);
+                            value += AnalysePhrase(newRow, words, index, out index, anyValuableWords, wordValues);
                     }
                     else
                         index++;
                 }
             }
-            this.Weight = value;
+            if (this.valueableWords.Count != 0)
+                this.Weight = value;
+            else this.weight = float.NaN;
         }
 
         public float AnalysePhrase(string newRow, string[] words, int curInd, out int nextInd, HashSet<string> anyValuableWords, Hashtable wordValues)
