@@ -17,8 +17,9 @@ namespace WindowsFormsApp
     {
         public State()
         {
-            Tweets = new List<Tweet>();
-            Polygons = new List<List<List<Coordinates>>>();
+            this.Tweets = new List<Tweet>();
+            this.Polygons = new List<List<List<Coordinates>>>();
+            this.Weight = float.NaN;
         }
         public string Postcode { get; set; }
         public float Weight { get; set; }
