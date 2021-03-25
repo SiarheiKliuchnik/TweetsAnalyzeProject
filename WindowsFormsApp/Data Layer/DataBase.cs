@@ -42,7 +42,7 @@ namespace WindowsFormsApp
 
         public List<State> AnalyseTweets()
         {
-            List<State> newStates = new List<State>();
+            List<State> newStates = new List<State>(this.states);
             this.tweets[0].Analyse(this.wordValues, this.anyValuableWords);
             for (int i = 1; i<tweets.Count; i++)
             {
@@ -55,7 +55,11 @@ namespace WindowsFormsApp
                     if (!newStates.Exists(x => x.Postcode.Contains(state.Postcode)))
                     {
                         state.Tweets.Add(this.tweets[i]);
-                        state.Weight += this.tweets[i].Weight;
+                        if (!float.IsNaN(this.tweets[i].Weight))
+                        {
+                            state.Weight = 0;
+                            state.Weight += this.tweets[i].Weight;
+                        }
                         newStates.Add(state);
                     }
                     else
@@ -63,7 +67,18 @@ namespace WindowsFormsApp
                         int index = newStates.FindIndex(x => x.Postcode.Contains(state.Postcode));
                         State newState = newStates[index];
                         newStates.RemoveAt(index);
-                        newState.Weight = ((newState.Weight * newState.Tweets.Count) + this.tweets[i].Weight) / (newState.Tweets.Count + 1);
+                        if (!float.IsNaN(this.tweets[i].Weight))
+                        {
+                            if (!float.IsNaN(newState.Weight))
+                            {
+                                newState.Weight = ((newState.Weight * newState.Tweets.Count) + this.tweets[i].Weight) / (newState.Tweets.Count + 1);
+                            }
+                            else 
+                            {
+                                newState.Weight = 0;
+                                newState.Weight += this.tweets[i].Weight;
+                            }
+                        }
                         newState.Tweets.Add(this.tweets[i]);
                         newStates.Add(newState);
                     }
