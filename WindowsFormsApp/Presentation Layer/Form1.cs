@@ -15,11 +15,13 @@ using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.ToolTips;
 using GMap.NET.WindowsForms.Markers;
 
+using WindowsFormsApp.Presentation_Layer;
+
 namespace WindowsFormsApp
 {
     partial class Form1 : Form
     {
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace WindowsFormsApp
             DataBase dataBase = new DataBase();
 
             dataBase.ParseTweet(@"..\..\Data Layer\Data\weekend_tweets2014.txt");
-            dataBase.ParseSentiments(); 
+            dataBase.ParseSentiments();
             dataBase.ParseJSON();
             List<State> states = dataBase.AnalyseTweets();
             foreach (var tweet in dataBase.tweets)
@@ -62,6 +64,7 @@ namespace WindowsFormsApp
                 polyOverlay.Polygons.Add(poly);
             }
             gMapControl.Overlays.Add(polyOverlay);
+            gMapControl.Overlays.Add(paintTweets(states));
         }
 
         private void gMapControl1_Load(object sender, EventArgs e)
@@ -76,10 +79,10 @@ namespace WindowsFormsApp
 
         private List<GMapPolygon> paintStates(List<State> states)
         {
-           List<GMapPolygon> polys = new List<GMapPolygon>();
-           foreach(var item in states)
-           {
-                foreach(var polygons in item.Polygons)
+            List<GMapPolygon> polys = new List<GMapPolygon>();
+            foreach (var item in states)
+            {
+                foreach (var polygons in item.Polygons)
                 {
                     foreach (var polygon in polygons)
                     {
@@ -91,19 +94,10 @@ namespace WindowsFormsApp
                         }
                         item.centroid = item.Compute2DPolygonCentroid(polygon);
                         GMapPolygon plgn = new GMapPolygon(points, item.Postcode);
-                        if (item.Weight > 0)
-                        {
-                            plgn.Fill = new SolidBrush(Color.YellowGreen);
-                        }
-                        else if (item.Weight < 0)
-                        {
-                            plgn.Fill = new SolidBrush(Color.LightSkyBlue);
-                        }
-                        else
-                        {
-                            plgn.Fill = new SolidBrush(Color.WhiteSmoke);
-                        }
-                        plgn.Stroke = new Pen(Color.SeaShell, 0.01F);
+                        if (!float.IsNaN(item.Weight))
+                            plgn.Fill = new SolidBrush(Coloring.SetColors(item.Weight));
+                        else plgn.Fill = new SolidBrush(Color.Gray);
+                        plgn.Stroke = new Pen(Color.Black, 0.005F);
                         polys.Add(plgn);
                     }
                 }
@@ -111,9 +105,34 @@ namespace WindowsFormsApp
             return polys;
         }
 
+        private GMapOverlay paintTweets(List<State> states)
+        {
+            GMapOverlay tweets = new GMapOverlay("tweetPoints");
+            foreach(var state in states)
+            {
+                if (state.Postcode == "UNKNOWN" || state.Tweets.Count==0)
+                    continue;
+                foreach (var tweet in state.Tweets)
+                {
+                    if (!float.IsNaN(tweet.Weight))
+                     {
+                        Coordinates c = tweet.Location;
+                        PointLatLng point = new PointLatLng(tweet.Location.Longtitude, tweet.Location.Latitude);
+                        GMapPoint GPoint = new GMapPoint(point, 5, tweet.Weight);
+                        //GPoint.ToolTipText = tweet.Text;
+                        //GPoint.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                        tweets.Markers.Add(GPoint);
+
+                    }
+                }
+            }
+            return tweets;
+        }
+
         private void gMapControl_OnPolygonClick(GMapPolygon item, MouseEventArgs e)
         {
             
         }
+       
     }
 }
