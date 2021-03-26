@@ -16,6 +16,7 @@ using GMap.NET.WindowsForms.ToolTips;
 using GMap.NET.WindowsForms.Markers;
 
 using WindowsFormsApp.Presentation_Layer;
+using System.IO;
 
 namespace WindowsFormsApp
 {
@@ -29,6 +30,7 @@ namespace WindowsFormsApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            LoadListFileNames();
             dataGridView1.Columns.Add("location", "location");
             dataGridView1.Columns.Add("date", "date");
             dataGridView1.Columns.Add("text", "text");
@@ -37,7 +39,7 @@ namespace WindowsFormsApp
             GMapOverlay polyOverlay = new GMapOverlay("polyOverlay");
             DataBase dataBase = new DataBase();
 
-            dataBase.ParseTweet(@"..\..\Data Layer\Data\weekend_tweets2014.txt");
+            dataBase.ParseTweet(@"..\..\Data Layer\Data\cali_tweets2014.txt");
             dataBase.ParseSentiments();
             dataBase.ParseJSON();
             List<State> states = dataBase.AnalyseTweets();
@@ -66,7 +68,12 @@ namespace WindowsFormsApp
             gMapControl.Overlays.Add(polyOverlay);
             gMapControl.Overlays.Add(paintTweets(states));
         }
-
+        private void LoadListFileNames()
+        {
+            Directory.GetFiles(@"..\..\Data Layer\Data", "*.txt").ToList().ForEach(x => ChooseFileSouceBox.Items.Add(Path.GetFileNameWithoutExtension(x)));
+            if (ChooseFileSouceBox.Items.Count != 0)
+                ChooseFileSouceBox.SelectedIndex = 0;
+        }
         private void gMapControl1_Load(object sender, EventArgs e)
         {
             gMapControl.MapProvider = GMap.NET.MapProviders.YandexMapProvider.Instance;
@@ -133,6 +140,10 @@ namespace WindowsFormsApp
         {
             
         }
-       
+
+        private void Uploadbutton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
