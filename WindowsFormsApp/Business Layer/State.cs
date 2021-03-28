@@ -66,45 +66,5 @@ namespace WindowsFormsApp
             return result;
         }
 
-        public Coordinates Compute2DPolygonCentroid(List<Coordinates> vertices)
-        {
-            Coordinates centroid = new Coordinates(0, 0);
-            double signedArea = 0.0;
-            double x0 = 0.0;
-            double y0 = 0.0;
-            double x1 = 0.0;
-            double y1 = 0.0;
-            double a = 0.0;
-
-            // For all vertices except last
-            int i = 0;
-            for (i = 0; i < vertices.Count - 1; ++i)
-            {
-                x0 = vertices[i].Latitude;
-                y0 = vertices[i].Longtitude;
-                x1 = vertices[i + 1].Latitude;
-                y1 = vertices[i + 1].Longtitude;
-                a = x0 * y1 - x1 * y0;
-                signedArea += a;
-                centroid.Latitude += (x0 + x1) * a;
-                centroid.Longtitude += (y0 + y1) * a;
-            }
-
-            // Do last vertex
-            x0 = vertices[i].Latitude;
-            y0 = vertices[i].Longtitude;
-            x1 = vertices[0].Latitude;
-            y1 = vertices[0].Longtitude;
-            a = x0 * y1 - x1 * y0;
-            signedArea += a;
-            centroid.Latitude += (x0 + x1) * a;
-            centroid.Longtitude += (y0 + y1) * a;
-
-            signedArea *= 0.5;
-            centroid.Latitude /= (6 * signedArea);
-            centroid.Longtitude /= (6 * signedArea);
-
-            return centroid;
-        }
     }
 }
