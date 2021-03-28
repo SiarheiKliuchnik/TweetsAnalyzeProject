@@ -19,7 +19,8 @@ namespace WindowsFormsApp
     class DataBase
     {
         public List<Tweet> tweets = new List<Tweet>();
-        public List<State> states = new List<State>();
+        public Dictionary<string, State> states = new Dictionary<string, State>();
+        //public List<State> states = new List<State>();
         public Hashtable wordValues = new Hashtable();
         public HashSet<string> anyValuableWords = new HashSet<string>();
 
@@ -40,9 +41,10 @@ namespace WindowsFormsApp
             this.states = JsonParser.Parse(path);
         }
 
-        public List<State> AnalyseTweets()
+        public Dictionary<string, State> AnalyseTweets()
         {
-            List<State> newStates = new List<State>(this.states);
+            Dictionary<string, State> newStates = new Dictionary<string, State>(this.states);
+            List<State> states = new List<State>(newStates.Values);
             this.tweets[0].Analyse(this.wordValues, this.anyValuableWords);
             for (int i = 1; i<tweets.Count; i++)
             {
@@ -51,8 +53,8 @@ namespace WindowsFormsApp
                 else
                 {
                     this.tweets[i].Analyse(this.wordValues, this.anyValuableWords);
-                    State state = DetermineState(this.states, this.tweets[i]);
-                    if (!newStates.Exists(x => x.Postcode.Contains(state.Postcode)))
+                    State state = DetermineState(states, this.tweets[i]);
+                    if (!newStates.ContainsKey(state.Postcode)/*!newStates.Exists(x => x.Postcode.Contains(state.Postcode))*/)
                     {
                         state.Tweets.Add(this.tweets[i]);
                         if (!float.IsNaN(this.tweets[i].Weight))
@@ -60,13 +62,12 @@ namespace WindowsFormsApp
                             state.Weight = 0;
                             state.Weight += this.tweets[i].Weight;
                         }
-                        newStates.Add(state);
+                        newStates.Add(state.Postcode, state);
                     }
                     else
                     {
-                        int index = newStates.FindIndex(x => x.Postcode.Contains(state.Postcode));
-                        State newState = newStates[index];
-                        newStates.RemoveAt(index);
+                        State newState = newStates[state.Postcode];
+                        newStates.Remove(state.Postcode);
                         if (!float.IsNaN(this.tweets[i].Weight))
                         {
                             if (!float.IsNaN(newState.Weight))
@@ -80,7 +81,7 @@ namespace WindowsFormsApp
                             }
                         }
                         newState.Tweets.Add(this.tweets[i]);
-                        newStates.Add(newState);
+                        newStates.Add(newState.Postcode, newState);
                     }
                 }
             }
