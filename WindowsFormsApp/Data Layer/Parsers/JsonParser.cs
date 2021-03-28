@@ -12,12 +12,12 @@ namespace WindowsFormsApp
 {
     static class JsonParser
     {
-        public static List<State> Parse(string path = "..\\..\\..\\Data\\states.json")
+        public static Dictionary<string, State> Parse(string path = "..\\..\\..\\Data\\states.json")
         {
             string jsonString = new StreamReader(path).ReadToEnd();
             JObject jsonStates = JObject.Parse(jsonString);
 
-            List<State> states = new List<State>();
+            Dictionary<string, State> states = new Dictionary<string, State>();
 
             foreach(var s in jsonStates)
             {
@@ -58,7 +58,7 @@ namespace WindowsFormsApp
                     }
                     state.Polygons.Add(polygon);
                 }
-                states.Add(state);
+                states.Add(s.Key, state);
             }
             return states;
         }
