@@ -5,6 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.ToolTips;
+using GMap.NET.WindowsForms.Markers;
+
 namespace WindowsFormsApp
 {
     internal class Tweet
@@ -26,6 +32,12 @@ namespace WindowsFormsApp
 
         public List<string> valueableWords = new List<string>();
 
+        public Tweet(PointLatLng point, string text)
+        {
+            this.location = new Coordinates(point.Lat, point.Lng);
+            this.text = text;
+
+        }
         public Tweet(string location, string date, string text)
         {
             this.location = new Coordinates(location);
