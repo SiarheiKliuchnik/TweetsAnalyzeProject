@@ -32,7 +32,8 @@ namespace WindowsFormsApp
         {
             InitializeComponent();
             chooseFile.Visible = false;
-            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
+            LoadMap("weekend_tweets2014.txt");
+            SetMaximumSize();
         }
         protected override CreateParams CreateParams
         {
@@ -195,20 +196,29 @@ namespace WindowsFormsApp
 
         private void gMapControl_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
-            //Tweet tweet = new Tweet(item.Position, item.ToolTipText);
-            //State state = DetermineState(mapStates, tweet);
-            //foreach (var tw in state.Tweets)
-            //{
-            //    if (tw.Text == tweet.Text && (tw.Location.Latitude == tweet.Location.Latitude && tw.Location.Longtitude == tweet.Location.Longtitude))
-            //    {
-            //        label1.Text = "State: " + state.Postcode;
-            //        label4.Text = tw.Weight.ToString();
-            //        label4.ForeColor = Coloring.SetColors(tw.Weight);
-            //        label4.BackColor = Color.Black;
-            //        label3.Text = "Tweet: " + tw.Text;
-
-            //    }
-            //}
+            panel2.Invalidate();
+            panel2.Update();
+            Tweet tweet = new Tweet(item.Position, item.ToolTipText);
+            State state = DetermineState(mapStates, tweet);
+            Graphics g = panel2.CreateGraphics();
+            foreach (var tw in state.Tweets)
+            {
+                if (tw.Text == tweet.Text && (tw.Location.Latitude == tweet.Location.Latitude && tw.Location.Longtitude == tweet.Location.Longtitude))
+                {
+                    this.stateLabel.Text = state.Postcode;
+                    this.weightLabel.ForeColor = Coloring.SetColors(tw.Weight);
+                    this.weightLabel.Text = tw.Weight.ToString();
+                    this.tweetTextLabel.Text = tw.Text;
+                    int xOffset=0;
+                    for (int i = 0; i<tw.valueableWords.Count-1; i++)
+                    {
+                        string newStr = tw.valueableWords[i] + ", ";
+                        g.DrawString(newStr, new Font("Arial", 10), new SolidBrush(Coloring.SetColors(tw.Weight)), xOffset, 0);
+                        xOffset += newStr.Length*5;
+                    }
+                    g.DrawString(tw.valueableWords[tw.valueableWords.Count - 1], new Font("Arial", 10), new SolidBrush(Coloring.SetColors(tw.Weight)), xOffset, 0);
+                }
+            }
         }
         private State DetermineState(Dictionary<string, State> states, Tweet tweet)
         {
@@ -230,6 +240,13 @@ namespace WindowsFormsApp
             return stateToReturn;
         }
 
+        private void SetMaximumSize()
+        {
+            Rectangle rec = new Rectangle();
+            rec.Width = Screen.PrimaryScreen.WorkingArea.Size.Width + 14;
+            rec.Height = Screen.PrimaryScreen.WorkingArea.Size.Height + 14;
+            this.MaximumSize = rec.Size;
+        }
         private void logoAkhmat_Click(object sender, EventArgs e)
         {
 
@@ -269,10 +286,6 @@ namespace WindowsFormsApp
             WindowState = FormWindowState.Minimized;
         }
 
-        private void closeButton_MouseHover(object sender, EventArgs e)
-        {
-            closeButton.BackColor = Color.Red;
-        }
 
         private void closeButton_MouseLeave(object sender, EventArgs e)
         {
@@ -280,25 +293,33 @@ namespace WindowsFormsApp
 
         }
 
-        private void fullScreenButton_MouseHover(object sender, EventArgs e)
-        {
-            fullScreenButton.BackColor = Color.DarkGray;
-
-        }
 
         private void fullScreenButton_MouseLeave(object sender, EventArgs e)
         {
             fullScreenButton.BackColor = Color.Black;
         }
 
-        private void minimizeButton_MouseHover(object sender, EventArgs e)
-        {
-            minimizeButton.BackColor = Color.DarkGray;
-        }
 
         private void minimizeButton_MouseLeave(object sender, EventArgs e)
         {
             minimizeButton.BackColor = Color.Black;
+        }
+
+        private void closeButton_MouseEnter(object sender, EventArgs e)
+        {
+            closeButton.BackColor = Color.Red;
+        }
+
+        private void fullScreenButton_MouseEnter(object sender, EventArgs e)
+        {
+            fullScreenButton.BackColor = Color.DarkGray;
+
+        }
+
+        private void minimizeButton_MouseEnter(object sender, EventArgs e)
+        {
+            minimizeButton.BackColor = Color.DarkGray;
+
         }
     }
 }

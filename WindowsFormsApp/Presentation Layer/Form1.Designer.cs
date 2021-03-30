@@ -39,6 +39,10 @@
             this.fullScreenButton = new System.Windows.Forms.Button();
             this.minimizeButton = new System.Windows.Forms.Button();
             this.tweetInfoPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tweetTextLabel = new System.Windows.Forms.Label();
+            this.weightLabel = new System.Windows.Forms.Label();
+            this.stateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.header)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).BeginInit();
             this.tweetInfoPanel.SuspendLayout();
@@ -113,7 +117,7 @@
             this.chooseFile.BackColor = System.Drawing.Color.Black;
             this.chooseFile.FlatAppearance.BorderSize = 0;
             this.chooseFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chooseFile.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chooseFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chooseFile.ForeColor = System.Drawing.Color.White;
             this.chooseFile.Location = new System.Drawing.Point(78, 62);
             this.chooseFile.Name = "chooseFile";
@@ -128,7 +132,7 @@
             this.menuButton.BackColor = System.Drawing.Color.Black;
             this.menuButton.FlatAppearance.BorderSize = 0;
             this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.menuButton.Font = new System.Drawing.Font("HelvLight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuButton.ForeColor = System.Drawing.Color.White;
             this.menuButton.Location = new System.Drawing.Point(78, 13);
             this.menuButton.Name = "menuButton";
@@ -152,8 +156,8 @@
             this.closeButton.TabIndex = 11;
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.MouseEnter += new System.EventHandler(this.closeButton_MouseEnter);
             this.closeButton.MouseLeave += new System.EventHandler(this.closeButton_MouseLeave);
-            this.closeButton.MouseHover += new System.EventHandler(this.closeButton_MouseHover);
             // 
             // fullScreenButton
             // 
@@ -169,8 +173,8 @@
             this.fullScreenButton.TabIndex = 12;
             this.fullScreenButton.UseVisualStyleBackColor = false;
             this.fullScreenButton.Click += new System.EventHandler(this.fullScreenButton_Click);
+            this.fullScreenButton.MouseEnter += new System.EventHandler(this.fullScreenButton_MouseEnter);
             this.fullScreenButton.MouseLeave += new System.EventHandler(this.fullScreenButton_MouseLeave);
-            this.fullScreenButton.MouseHover += new System.EventHandler(this.fullScreenButton_MouseHover);
             // 
             // minimizeButton
             // 
@@ -186,19 +190,62 @@
             this.minimizeButton.TabIndex = 13;
             this.minimizeButton.UseVisualStyleBackColor = false;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            this.minimizeButton.MouseEnter += new System.EventHandler(this.minimizeButton_MouseEnter);
             this.minimizeButton.MouseLeave += new System.EventHandler(this.minimizeButton_MouseLeave);
-            this.minimizeButton.MouseHover += new System.EventHandler(this.minimizeButton_MouseHover);
             // 
             // tweetInfoPanel
             // 
             this.tweetInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tweetInfoPanel.BackColor = System.Drawing.Color.Black;
+            this.tweetInfoPanel.Controls.Add(this.panel2);
+            this.tweetInfoPanel.Controls.Add(this.tweetTextLabel);
+            this.tweetInfoPanel.Controls.Add(this.weightLabel);
+            this.tweetInfoPanel.Controls.Add(this.stateLabel);
             this.tweetInfoPanel.Controls.Add(this.panel1);
             this.tweetInfoPanel.Location = new System.Drawing.Point(0, 563);
             this.tweetInfoPanel.Name = "tweetInfoPanel";
             this.tweetInfoPanel.Size = new System.Drawing.Size(1300, 65);
             this.tweetInfoPanel.TabIndex = 14;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(398, 35);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(870, 17);
+            this.panel2.TabIndex = 8;
+            // 
+            // tweetTextLabel
+            // 
+            this.tweetTextLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tweetTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tweetTextLabel.ForeColor = System.Drawing.Color.White;
+            this.tweetTextLabel.Location = new System.Drawing.Point(394, 5);
+            this.tweetTextLabel.Name = "tweetTextLabel";
+            this.tweetTextLabel.Size = new System.Drawing.Size(874, 27);
+            this.tweetTextLabel.TabIndex = 7;
+            // 
+            // weightLabel
+            // 
+            this.weightLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.weightLabel.AutoSize = true;
+            this.weightLabel.ForeColor = System.Drawing.Color.White;
+            this.weightLabel.Location = new System.Drawing.Point(337, 36);
+            this.weightLabel.Name = "weightLabel";
+            this.weightLabel.Size = new System.Drawing.Size(0, 13);
+            this.weightLabel.TabIndex = 6;
+            // 
+            // stateLabel
+            // 
+            this.stateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.stateLabel.BackColor = System.Drawing.Color.Black;
+            this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.stateLabel.ForeColor = System.Drawing.Color.White;
+            this.stateLabel.Location = new System.Drawing.Point(320, 5);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(68, 27);
+            this.stateLabel.TabIndex = 5;
+            this.stateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -223,6 +270,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.header)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).EndInit();
             this.tweetInfoPanel.ResumeLayout(false);
+            this.tweetInfoPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -238,6 +286,10 @@
         private System.Windows.Forms.Button fullScreenButton;
         private System.Windows.Forms.Button minimizeButton;
         private System.Windows.Forms.Panel tweetInfoPanel;
+        private System.Windows.Forms.Label stateLabel;
+        private System.Windows.Forms.Label weightLabel;
+        private System.Windows.Forms.Label tweetTextLabel;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
