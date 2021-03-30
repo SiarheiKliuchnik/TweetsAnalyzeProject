@@ -18,6 +18,7 @@ using GMap.NET.WindowsForms.Markers;
 
 using WindowsFormsApp.Presentation_Layer;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace WindowsFormsApp
 {
@@ -30,22 +31,31 @@ namespace WindowsFormsApp
         public Form1()
         {
             InitializeComponent();
+            chooseFile.Visible = false;
+            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int WS_SIZEBOX = 0x40000;
 
+                var cp = base.CreateParams;
+                cp.Style |= WS_SIZEBOX;
+
+                return cp;
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadListFileNames();
-            dataGridView1.Columns.Add("location", "location");
-            dataGridView1.Columns.Add("date", "date");
-            dataGridView1.Columns.Add("text", "text");
-            checkBox1.Checked = true;
+            //LoadListFileNames();
         }
-        private void LoadListFileNames()
-        {
-            Directory.GetFiles(@"..\..\Data Layer\Data", "*.txt").ToList().ForEach(x => ChooseFileSouceBox.Items.Add(Path.GetFileNameWithoutExtension(x)));
-            if (ChooseFileSouceBox.Items.Count != 0)
-                ChooseFileSouceBox.SelectedIndex = 0;
-        }
+        //private void LoadListFileNames()
+        //{
+        //    Directory.GetFiles(@"..\..\Data Layer\Data", "*.txt").ToList().ForEach(x => ChooseFileSouceBox.Items.Add(Path.GetFileNameWithoutExtension(x)));
+        //    if (ChooseFileSouceBox.Items.Count != 0)
+        //        ChooseFileSouceBox.SelectedIndex = 0;
+        //}
         private void gMapControl1_Load(object sender, EventArgs e)
         {
             gMapControl.MapProvider = GMap.NET.MapProviders.YandexMapProvider.Instance;
@@ -122,10 +132,10 @@ namespace WindowsFormsApp
 
         }
 
-        private void Uploadbutton_Click(object sender, EventArgs e)
-        {
-            LoadMap(ChooseFileSouceBox.SelectedItem.ToString() + ".txt");
-        }
+        //private void Uploadbutton_Click(object sender, EventArgs e)
+        //{
+        //    LoadMap(ChooseFileSouceBox.SelectedItem.ToString() + ".txt");
+        //}
 
         private void DrawLegend()
         {
@@ -137,7 +147,7 @@ namespace WindowsFormsApp
             Brush[] br = new LinearGradientBrush[grids];
             float min = -1.5f, step = 0.5f;
             float currentValue = min;
-            g.DrawString("Emotional weight", new Font("Times", 10), Brushes.Black, (panel1.Width + 36) / 4, 0);
+            g.DrawString("Emotional weight", new Font("HelvLight", 10), Brushes.White, (panel1.Width + 36) / 4, 0);
             for (int i = 0; i < grids; i++)
             {
                 recs[i] = new Rectangle(widthOfRec * i, 30, widthOfRec, 20);
@@ -145,9 +155,9 @@ namespace WindowsFormsApp
                 currentValue += step;
                 g.FillRectangle(br[i], recs[i]);
                 g.DrawRectangle(pen, recs[i]);
-                g.DrawString(Convert.ToString(currentValue - step), new Font("Arial", 8), Brushes.Black, (widthOfRec - 2) * i, 18);
+                g.DrawString(Convert.ToString(currentValue - step), new Font("Arial", 8), Brushes.White, (widthOfRec - 2) * i, 18);
             }
-            g.DrawString(Convert.ToString(currentValue), new Font("Arial", 8), Brushes.Black, (widthOfRec - 2) * (grids), 18);
+            g.DrawString(Convert.ToString(currentValue), new Font("Arial", 8), Brushes.White, (widthOfRec - 2) * (grids), 18);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -164,16 +174,7 @@ namespace WindowsFormsApp
             dataBase.ParseSentiments();
             dataBase.ParseJSON();
             mapStates = dataBase.AnalyseTweets();
-            foreach (var tweet in dataBase.tweets)
-            {
-                string[] mas = new string[]
-                {
-                    tweet.Location.ToString(),
-                    tweet.DateOfTweet.ToString(),
-                    tweet.Text
-                };
-                dataGridView1.Rows.Add(mas);
-            }
+            
             gMapControl.MarkersEnabled = true;
             gMapControl.PolygonsEnabled = true;
             List<GMapPolygon> polys = paintStates(mapStates);
@@ -183,33 +184,31 @@ namespace WindowsFormsApp
             }
             gMapControl.Overlays.Add(polyOverlay);
             tweetOverlay = paintTweets(mapStates);
-            if (checkBox1.Checked)
-                tweetOverlay.IsVisibile = true;
-            else tweetOverlay.IsVisibile = false;
+            
             gMapControl.Overlays.Add(tweetOverlay);
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            tweetOverlay.IsVisibile = checkBox1.Checked;
-        }
+        //private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    tweetOverlay.IsVisibile = checkBox1.Checked;
+        //}
 
         private void gMapControl_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
-            Tweet tweet = new Tweet(item.Position, item.ToolTipText);
-            State state = DetermineState(mapStates, tweet);
-            foreach (var tw in state.Tweets)
-            {
-                if (tw.Text == tweet.Text && (tw.Location.Latitude == tweet.Location.Latitude && tw.Location.Longtitude == tweet.Location.Longtitude))
-                {
-                    label1.Text = "State: " + state.Postcode;
-                    label4.Text = tw.Weight.ToString();
-                    label4.ForeColor = Coloring.SetColors(tw.Weight);
-                    label4.BackColor = Color.Black;
-                    label3.Text = "Tweet: " + tw.Text;
-                    
-                }
-            }
+            //Tweet tweet = new Tweet(item.Position, item.ToolTipText);
+            //State state = DetermineState(mapStates, tweet);
+            //foreach (var tw in state.Tweets)
+            //{
+            //    if (tw.Text == tweet.Text && (tw.Location.Latitude == tweet.Location.Latitude && tw.Location.Longtitude == tweet.Location.Longtitude))
+            //    {
+            //        label1.Text = "State: " + state.Postcode;
+            //        label4.Text = tw.Weight.ToString();
+            //        label4.ForeColor = Coloring.SetColors(tw.Weight);
+            //        label4.BackColor = Color.Black;
+            //        label3.Text = "Tweet: " + tw.Text;
+
+            //    }
+            //}
         }
         private State DetermineState(Dictionary<string, State> states, Tweet tweet)
         {
@@ -229,6 +228,77 @@ namespace WindowsFormsApp
                 }
             }
             return stateToReturn;
+        }
+
+        private void logoAkhmat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            chooseFile.Visible = !chooseFile.Visible;
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void header_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void fullScreenButton_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
+
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void closeButton_MouseHover(object sender, EventArgs e)
+        {
+            closeButton.BackColor = Color.Red;
+        }
+
+        private void closeButton_MouseLeave(object sender, EventArgs e)
+        {
+            closeButton.BackColor = Color.Black;
+
+        }
+
+        private void fullScreenButton_MouseHover(object sender, EventArgs e)
+        {
+            fullScreenButton.BackColor = Color.DarkGray;
+
+        }
+
+        private void fullScreenButton_MouseLeave(object sender, EventArgs e)
+        {
+            fullScreenButton.BackColor = Color.Black;
+        }
+
+        private void minimizeButton_MouseHover(object sender, EventArgs e)
+        {
+            minimizeButton.BackColor = Color.DarkGray;
+        }
+
+        private void minimizeButton_MouseLeave(object sender, EventArgs e)
+        {
+            minimizeButton.BackColor = Color.Black;
         }
     }
 }
