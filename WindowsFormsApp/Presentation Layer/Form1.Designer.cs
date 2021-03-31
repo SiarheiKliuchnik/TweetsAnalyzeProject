@@ -157,9 +157,10 @@
             this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton.FlatAppearance.BorderSize = 0;
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.ForeColor = System.Drawing.Color.Transparent;
             this.closeButton.Location = new System.Drawing.Point(1274, 2);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(20, 20);
+            this.closeButton.Size = new System.Drawing.Size(20, 25);
             this.closeButton.TabIndex = 11;
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -174,9 +175,10 @@
             this.fullScreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.fullScreenButton.FlatAppearance.BorderSize = 0;
             this.fullScreenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fullScreenButton.Location = new System.Drawing.Point(1248, 2);
+            this.fullScreenButton.ForeColor = System.Drawing.Color.Transparent;
+            this.fullScreenButton.Location = new System.Drawing.Point(1251, 2);
             this.fullScreenButton.Name = "fullScreenButton";
-            this.fullScreenButton.Size = new System.Drawing.Size(20, 20);
+            this.fullScreenButton.Size = new System.Drawing.Size(20, 25);
             this.fullScreenButton.TabIndex = 12;
             this.fullScreenButton.UseVisualStyleBackColor = false;
             this.fullScreenButton.Click += new System.EventHandler(this.fullScreenButton_Click);
@@ -191,9 +193,10 @@
             this.minimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.minimizeButton.FlatAppearance.BorderSize = 0;
             this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minimizeButton.Location = new System.Drawing.Point(1222, 2);
+            this.minimizeButton.ForeColor = System.Drawing.Color.Transparent;
+            this.minimizeButton.Location = new System.Drawing.Point(1227, 2);
             this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Size = new System.Drawing.Size(20, 20);
+            this.minimizeButton.Size = new System.Drawing.Size(20, 25);
             this.minimizeButton.TabIndex = 13;
             this.minimizeButton.UseVisualStyleBackColor = false;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
