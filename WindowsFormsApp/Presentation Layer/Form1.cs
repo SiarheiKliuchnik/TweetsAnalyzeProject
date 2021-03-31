@@ -33,6 +33,7 @@ namespace WindowsFormsApp
             InitializeComponent();
             chooseFile.Visible = false;
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
+            this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
         }
         protected override CreateParams CreateParams
         {
@@ -237,7 +238,10 @@ namespace WindowsFormsApp
 
         private void menuButton_Click(object sender, EventArgs e)
         {
+            menuButton.Image = Image.FromFile("../../Presentation Layer/Interface/menuToo2.png");
+            this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
             chooseFile.Visible = !chooseFile.Visible;
+            
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -299,6 +303,11 @@ namespace WindowsFormsApp
         private void minimizeButton_MouseLeave(object sender, EventArgs e)
         {
             minimizeButton.BackColor = Color.Black;
+        }
+
+        private void RotateMenuTool()
+        {
+
         }
     }
 }

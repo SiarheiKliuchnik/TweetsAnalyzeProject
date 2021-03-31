@@ -115,6 +115,7 @@
             this.chooseFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chooseFile.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chooseFile.ForeColor = System.Drawing.Color.White;
+            this.chooseFile.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chooseFile.Location = new System.Drawing.Point(78, 62);
             this.chooseFile.Name = "chooseFile";
             this.chooseFile.Size = new System.Drawing.Size(150, 40);
@@ -126,15 +127,19 @@
             // menuButton
             // 
             this.menuButton.BackColor = System.Drawing.Color.Black;
+            this.menuButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.menuButton.FlatAppearance.BorderSize = 0;
             this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.menuButton.Font = new System.Drawing.Font("HelvLight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuButton.Font = new System.Drawing.Font("HelvLight", 20.3F);
             this.menuButton.ForeColor = System.Drawing.Color.White;
-            this.menuButton.Location = new System.Drawing.Point(78, 13);
+            this.menuButton.Image = ((System.Drawing.Image)(resources.GetObject("menuButton.Image")));
+            this.menuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.menuButton.Location = new System.Drawing.Point(78, 10);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(90, 35);
+            this.menuButton.Size = new System.Drawing.Size(111, 46);
             this.menuButton.TabIndex = 10;
             this.menuButton.Text = "Menu";
+            this.menuButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.menuButton.UseVisualStyleBackColor = false;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
