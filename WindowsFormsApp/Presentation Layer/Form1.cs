@@ -32,8 +32,11 @@ namespace WindowsFormsApp
         {
             InitializeComponent();
             chooseFile.Visible = false;
-            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
+            screenshotButton.Visible = false;
+            getInfoButton.Visible = false;
+            SetMaximumWindowsSize();
             this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
+            LoadMap("cali_tweets2014.txt");
         }
         protected override CreateParams CreateParams
         {
@@ -87,6 +90,7 @@ namespace WindowsFormsApp
                             plgn.Fill = new SolidBrush(Coloring.SetColors(item.Weight));
                         else plgn.Fill = new SolidBrush(Color.Gray);
                         plgn.Stroke = new Pen(Color.Black, 0.005F);
+                        //plgn.IsHitTestVisible = true;
                         polys.Add(plgn);
                     }
                 }
@@ -130,7 +134,7 @@ namespace WindowsFormsApp
 
         private void gMapControl_OnPolygonClick(GMapPolygon item, MouseEventArgs e)
         {
-
+            MessageBox.Show("TEST");
         }
 
         //private void Uploadbutton_Click(object sender, EventArgs e)
@@ -158,7 +162,7 @@ namespace WindowsFormsApp
                 g.DrawRectangle(pen, recs[i]);
                 g.DrawString(Convert.ToString(currentValue - step), new Font("Arial", 8), Brushes.White, (widthOfRec - 2) * i, 18);
             }
-            g.DrawString(Convert.ToString(currentValue), new Font("Arial", 8), Brushes.White, (widthOfRec - 2) * (grids), 18);
+            g.DrawString(Convert.ToString(currentValue)+"+", new Font("Arial", 8), Brushes.White, (widthOfRec - 3) * (grids), 18);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -238,10 +242,19 @@ namespace WindowsFormsApp
 
         private void menuButton_Click(object sender, EventArgs e)
         {
-            menuButton.Image = Image.FromFile("../../Presentation Layer/Interface/menuToo2.png");
-            this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
+            if (!chooseFile.Visible)
+            {
+                menuButton.Image = Image.FromFile("../../Presentation Layer/Interface/menuToo2.png");
+                this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
+            }
+            else
+            {
+                menuButton.Image = Image.FromFile("../../Presentation Layer/Interface/menuToo1.png");
+                this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
+            }
             chooseFile.Visible = !chooseFile.Visible;
-            
+            screenshotButton.Visible = !screenshotButton.Visible;
+            getInfoButton.Visible = !getInfoButton.Visible;
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -308,6 +321,75 @@ namespace WindowsFormsApp
         private void RotateMenuTool()
         {
 
+        }
+
+        private void SetMaximumWindowsSize()
+        {
+            Rectangle rec = new Rectangle();
+            rec.Width = Screen.PrimaryScreen.WorkingArea.Size.Width + 14;
+            rec.Height = Screen.PrimaryScreen.WorkingArea.Size.Height + 14;
+            this.MaximumSize = rec.Size;
+        }
+
+        private void screenshotButton_Click(object sender, EventArgs e)
+        {
+            using (var bmp = new Bitmap(gMapControl.Width, gMapControl.Height))
+                {
+                 gMapControl.DrawToBitmap(bmp, new Rectangle(0, 0, this.Width, this.Height));
+                 bmp.Save(@"c:\temp\screnshot.png");
+                }
+            menuButton_Click(sender, e);
+        }
+
+        private void tweetInfoPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void header_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logoAkhmat_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chooseFile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void getInfoButton_Click(object sender, EventArgs e)
+        {
+            FileStream fs = new FileStream(@"c:\temp\test.txt", FileMode.OpenOrCreate);
+            StreamWriter w = new StreamWriter(fs, Encoding.Default);
+            foreach (var state in mapStates.Values)
+            {
+                if (state.Postcode.Equals("UNKNOWN")) continue;
+                w.WriteLine($"{state.Postcode} ({state.Weight.ToString()}):");
+                foreach (var tweet in state.Tweets)
+                {
+                    if (!float.IsNaN(tweet.Weight))
+                    {
+                        w.WriteLine(tweet.Weight.ToString() + " | " + tweet.Text);
+                        w.Write("Valuable words or phrases: ");
+                        for (int i = 0; i<tweet.valueableWords.Count-1; i++)
+                        {
+                            w.Write(tweet.valueableWords[i] + ", ");
+                        }
+                        w.WriteLine(tweet.valueableWords[tweet.valueableWords.Count - 1] + ".");
+                    }
+                }
+                w.WriteLine();
+            }
+            menuButton_Click(sender, e);
+        }
+
+        private void gMapControl_OnPolygonEnter(GMapPolygon item)
+        {
+            
         }
     }
 }

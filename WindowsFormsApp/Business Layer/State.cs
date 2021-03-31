@@ -30,7 +30,6 @@ namespace WindowsFormsApp
         public double max_long = -180;
         public double min_lat = 180;
         public double max_lat = -180;
-        public Coordinates centroid;
         public bool IsInside(Coordinates p, List<Coordinates> polygonPoints)
         {
             if (p.Latitude > max_long || p.Latitude < min_long || p.Longtitude > max_lat || p.Longtitude < min_lat)

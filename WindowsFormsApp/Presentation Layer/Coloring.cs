@@ -47,6 +47,7 @@ namespace WindowsFormsApp.Presentation_Layer
             }
                 return Color.FromArgb(IsOutOfByte(red), IsOutOfByte(green), IsOutOfByte(blue));
         }
+
         private static int IsOutOfByte(int value)
         {
             if (value < 0)
