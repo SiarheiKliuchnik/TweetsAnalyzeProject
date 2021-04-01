@@ -158,13 +158,13 @@ namespace WindowsFormsApp
         {
             Pen pen = new Pen(Color.Black, 0.002f);
             int grids = 6;
-            int widthOfRec = (panel1.Width - 1) / grids;
-            Graphics g = panel1.CreateGraphics();
+            int widthOfRec = (EmotionPanel.Width - 1) / grids;
+            Graphics g = EmotionPanel.CreateGraphics();
             Rectangle[] recs = new Rectangle[grids];
             Brush[] br = new LinearGradientBrush[grids];
             float min = -1.5f, step = 0.5f;
             float currentValue = min;
-            g.DrawString("Emotional weight", new Font("HelvLight", 10), Brushes.White, (panel1.Width + 36) / 4, 0);
+            g.DrawString("Emotional weight", new Font("HelvLight", 10), Brushes.White, (EmotionPanel.Width + 36) / 4, 0);
             for (int i = 0; i < grids; i++)
             {
                 recs[i] = new Rectangle(widthOfRec * i, 30, widthOfRec, 20);
@@ -440,11 +440,21 @@ namespace WindowsFormsApp
             menuButton_Click(sender, e);
             SettingsForm sf = new SettingsForm();
             sf.ShowDialog();
+            EmotionPanelCheckBoxChecked();
+            TweetPointCheckBoxChecked();
         }
 
-        private void IsCheckBoxChecked()
+        private void EmotionPanelCheckBoxChecked()
         {
-            if (Data.isCheckBoxChecked)
+            if (Data.EmotionPanelCheckBoxChecked)
+            {
+                EmotionPanel.Visible = true;
+            }
+            else EmotionPanel.Visible = false;
+        }
+        private void TweetPointCheckBoxChecked()
+        {
+            if (Data.TweetPointsCheckBoxChecked)
             {
                 tweetOverlay.IsVisibile = true;
             }

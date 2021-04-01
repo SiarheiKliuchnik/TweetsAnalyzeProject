@@ -59,5 +59,21 @@ namespace WindowsFormsApp.Presentation_Layer
         {
 
         }
+
+        private void SettingsForm_Load(object sender, EventArgs e)
+        {
+            tweetPointsCheckBox.Checked = Data.TweetPointsCheckBoxChecked;
+            EmotionScaleCheckBox.Checked = Data.EmotionPanelCheckBoxChecked;
+        }
+
+        private void tweetPointsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Data.TweetPointsCheckBoxChecked = tweetPointsCheckBox.Checked;
+        }
+
+        private void EmotionScaleCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Data.EmotionPanelCheckBoxChecked = EmotionScaleCheckBox.Checked;
+        }
     }
 }
