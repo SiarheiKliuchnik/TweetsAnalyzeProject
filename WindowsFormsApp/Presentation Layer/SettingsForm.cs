@@ -62,9 +62,18 @@ namespace WindowsFormsApp.Presentation_Layer
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
+            localizationComboBox.DataSource = new System.Globalization.CultureInfo[]
+            {
+               System.Globalization.CultureInfo.GetCultureInfo("en-US"),
+               System.Globalization.CultureInfo.GetCultureInfo("ru-RU"),
+               System.Globalization.CultureInfo.GetCultureInfo("ar")
+            };
+            localizationComboBox.DisplayMember = "NativeName";
+            localizationComboBox.ValueMember = "Name";
             tweetPointsCheckBox.Checked = Data.TweetPointsCheckBoxChecked;
             EmotionScaleCheckBox.Checked = Data.EmotionPanelCheckBoxChecked;
             pathLabel.Text = Data.Directory;
+            localizationComboBox.SelectedItem = System.Globalization.CultureInfo.CurrentUICulture;
         }
 
         private void tweetPointsCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -82,7 +91,7 @@ namespace WindowsFormsApp.Presentation_Layer
             FileStream fs = new FileStream(@"..\\..\\..\\Data\\settings.cfg", FileMode.Truncate);
             StreamWriter w = new StreamWriter(fs, Encoding.Default);
             {
-                string settings = $"{Data.EmotionPanelCheckBoxChecked.ToString()}, {Data.TweetPointsCheckBoxChecked.ToString()}, {Data.Directory}";
+                string settings = $"{Data.EmotionPanelCheckBoxChecked.ToString()}, {Data.TweetPointsCheckBoxChecked.ToString()}, {Data.Directory}, {localizationComboBox.SelectedItem}";
                 w.WriteLine(settings);
             }
             w.Close();

@@ -57,6 +57,21 @@
   <ItemGroup>
     <Compile Include="Business Layer\Coordinates.cs" />
     <Compile Include="Data Layer\DataBase.cs" />
+    <Compile Include="LocalizationStrings.ar.Designer.cs">
+      <DependentUpon>LocalizationStrings.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LocalizationStrings.ru-RU.Designer.cs">
+      <DependentUpon>LocalizationStrings.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LocalizationStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizationStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Presentation Layer\Coloring.cs" />
     <Compile Include="Presentation Layer\Form1.cs">
       <SubType>Form</SubType>
@@ -77,10 +92,34 @@
     <Compile Include="Business Layer\State.cs" />
     <Compile Include="Business Layer\Tweet.cs" />
     <Compile Include="Data Layer\Parsers\TweetParser.cs" />
+    <EmbeddedResource Include="LocalizationStrings.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizationStrings.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizationStrings.ru-RU.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizationStrings.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizationStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizationStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation Layer\Form1.ar.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation Layer\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation Layer\Form1.ru-RU.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation Layer\SettingsForm.ar.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation Layer\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation Layer\SettingsForm.ru.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -31,6 +31,9 @@ namespace WindowsFormsApp
 
         public Form1()
         {
+            ParseSettings();
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Data.CurrentCultureName);
+
             InitializeComponent();
             LoadingScreenOnOff(false);
          
@@ -47,7 +50,6 @@ namespace WindowsFormsApp
             dataBase.ParseSentiments();
             dataBase.ParseJSON();
 
-            ParseSettings();
             EmotionPanelCheckBoxChecked();
         }
         protected override CreateParams CreateParams
@@ -64,15 +66,9 @@ namespace WindowsFormsApp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //closeButton.Visible = true;
-            //LoadListFileNames();
+
         }
-        //private void LoadListFileNames()
-        //{
-        //    Directory.GetFiles(@"..\..\Data Layer\Data", "*.txt").ToList().ForEach(x => ChooseFileSouceBox.Items.Add(Path.GetFileNameWithoutExtension(x)));
-        //    if (ChooseFileSouceBox.Items.Count != 0)
-        //        ChooseFileSouceBox.SelectedIndex = 0;
-        //}
+
         private void gMapControl1_Load(object sender, EventArgs e)
         {
             gMapControl.MapProvider = GMap.NET.MapProviders.YandexMapProvider.Instance;
@@ -103,7 +99,6 @@ namespace WindowsFormsApp
                             plgn.Fill = new SolidBrush(Coloring.SetColors(item.Weight));
                         else plgn.Fill = new SolidBrush(Color.Gray);
                         plgn.Stroke = new Pen(Color.Black, 0.005F);
-                        //plgn.IsHitTestVisible = true;
                         polys.Add(plgn);
                     }
                 }
@@ -150,10 +145,6 @@ namespace WindowsFormsApp
             
         }
 
-        //private void Uploadbutton_Click(object sender, EventArgs e)
-        //{
-        //    LoadMap(ChooseFileSouceBox.SelectedItem.ToString() + ".txt");
-        //}
 
         private void LoadingScreenOnOff(bool active)
         {
@@ -171,7 +162,7 @@ namespace WindowsFormsApp
             Brush[] br = new LinearGradientBrush[grids];
             float min = -1.5f, step = 0.5f;
             float currentValue = min;
-            g.DrawString("Emotional weight", new Font("HelvLight", 10), Brushes.White, (EmotionPanel.Width + 36) / 4, 0);
+            g.DrawString(LocalizationStrings.EmoWeight, new Font("HelvLight", 10), Brushes.White, (EmotionPanel.Width + 36) / 4, 0);
             for (int i = 0; i < grids; i++)
             {
                 recs[i] = new Rectangle(widthOfRec * i, 30, widthOfRec, 20);
@@ -428,7 +419,7 @@ namespace WindowsFormsApp
             {
                 if (tw.Text == tweet.Text && (tw.Location.Latitude == tweet.Location.Latitude && tw.Location.Longtitude == tweet.Location.Longtitude))
                 {
-                    gmapToolTip.SetToolTip(gMapControl, $"State: {state.Postcode}\nTweet: {tw.Text}\nWeight: {tw.Weight}");
+                    gmapToolTip.SetToolTip(gMapControl, $"{LocalizationStrings.StateTitle}: {state.Postcode}\n{LocalizationStrings.TextTitle}: {tw.Text}\n{LocalizationStrings.WeightTitle}: {tw.Weight}");
                 }
             }
         }
@@ -508,6 +499,7 @@ namespace WindowsFormsApp
                 Data.EmotionPanelCheckBoxChecked = Convert.ToBoolean(lines[0]);
                 Data.TweetPointsCheckBoxChecked= Convert.ToBoolean(lines[1]);
                 Data.Directory = lines[2];
+                Data.CurrentCultureName = lines[3].Trim();
             }
             sr.Close();
             sr.Dispose();
