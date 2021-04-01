@@ -44,6 +44,8 @@
             this.getInfoButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
             this.gmapToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.chooseFileListView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.header)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).BeginInit();
             this.tweetInfoPanel.SuspendLayout();
@@ -60,7 +62,7 @@
             this.gMapControl.GrayScaleMode = false;
             this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl.LevelsKeepInMemmory = 5;
-            this.gMapControl.Location = new System.Drawing.Point(-4, 59);
+            this.gMapControl.Location = new System.Drawing.Point(12, 32);
             this.gMapControl.Margin = new System.Windows.Forms.Padding(2);
             this.gMapControl.MarkersEnabled = true;
             this.gMapControl.MaxZoom = 2;
@@ -80,8 +82,6 @@
             this.gMapControl.Zoom = 0D;
             this.gMapControl.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gMapControl_OnMarkerClick);
             this.gMapControl.OnPolygonClick += new GMap.NET.WindowsForms.PolygonClick(this.gMapControl_OnPolygonClick);
-            this.gMapControl.OnMarkerEnter += new GMap.NET.WindowsForms.MarkerEnter(this.gMapControl_OnMarkerEnter);
-            this.gMapControl.OnPolygonEnter += new GMap.NET.WindowsForms.PolygonEnter(this.gMapControl_OnPolygonEnter);
             this.gMapControl.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // panel1
@@ -270,11 +270,36 @@
             this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
+            // chooseFileListView
+            // 
+            this.chooseFileListView.BackColor = System.Drawing.Color.Black;
+            this.chooseFileListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chooseFileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.chooseFileListView.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chooseFileListView.ForeColor = System.Drawing.Color.White;
+            this.chooseFileListView.HideSelection = false;
+            this.chooseFileListView.Location = new System.Drawing.Point(225, 62);
+            this.chooseFileListView.MultiSelect = false;
+            this.chooseFileListView.Name = "chooseFileListView";
+            this.chooseFileListView.Scrollable = false;
+            this.chooseFileListView.Size = new System.Drawing.Size(161, 202);
+            this.chooseFileListView.TabIndex = 18;
+            this.chooseFileListView.UseCompatibleStateImageBehavior = false;
+            this.chooseFileListView.View = System.Windows.Forms.View.List;
+            this.chooseFileListView.ItemActivate += new System.EventHandler(this.chooseFileListView_ItemActivate);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "";
+            this.columnHeader1.Width = 160;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1296, 621);
+            this.Controls.Add(this.chooseFileListView);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.getInfoButton);
             this.Controls.Add(this.screenshotButton);
@@ -316,6 +341,8 @@
         private System.Windows.Forms.Button getInfoButton;
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.ToolTip gmapToolTip;
+        private System.Windows.Forms.ListView chooseFileListView;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
 

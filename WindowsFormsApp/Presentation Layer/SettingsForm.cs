@@ -49,5 +49,15 @@ namespace WindowsFormsApp.Presentation_Layer
                 ReleaseCapture();
                 SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void localizationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

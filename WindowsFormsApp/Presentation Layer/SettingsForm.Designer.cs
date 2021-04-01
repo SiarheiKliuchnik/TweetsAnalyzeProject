@@ -43,7 +43,9 @@ namespace WindowsFormsApp.Presentation_Layer
             this.saveButton = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.dragPanel = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).BeginInit();
+            this.dragPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // minimizeButton
@@ -114,7 +116,7 @@ namespace WindowsFormsApp.Presentation_Layer
             this.changeDirButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changeDirButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changeDirButton.ForeColor = System.Drawing.Color.White;
-            this.changeDirButton.Location = new System.Drawing.Point(337, 163);
+            this.changeDirButton.Location = new System.Drawing.Point(338, 189);
             this.changeDirButton.Name = "changeDirButton";
             this.changeDirButton.Size = new System.Drawing.Size(75, 31);
             this.changeDirButton.TabIndex = 20;
@@ -126,31 +128,33 @@ namespace WindowsFormsApp.Presentation_Layer
             // 
             this.localizationComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.localizationComboBox.FormattingEnabled = true;
-            this.localizationComboBox.Location = new System.Drawing.Point(27, 255);
+            this.localizationComboBox.Location = new System.Drawing.Point(143, 248);
             this.localizationComboBox.Name = "localizationComboBox";
             this.localizationComboBox.Size = new System.Drawing.Size(121, 21);
             this.localizationComboBox.TabIndex = 21;
+            this.localizationComboBox.SelectedIndexChanged += new System.EventHandler(this.localizationComboBox_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(23, 230);
+            this.label2.Location = new System.Drawing.Point(25, 245);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 22);
             this.label2.TabIndex = 22;
             this.label2.Text = "Localization:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // tweetPointsCheckBox
             // 
             this.tweetPointsCheckBox.AutoSize = true;
             this.tweetPointsCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.tweetPointsCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tweetPointsCheckBox.Font = new System.Drawing.Font("HelvLight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tweetPointsCheckBox.ForeColor = System.Drawing.Color.White;
-            this.tweetPointsCheckBox.Location = new System.Drawing.Point(27, 86);
+            this.tweetPointsCheckBox.Location = new System.Drawing.Point(29, 71);
             this.tweetPointsCheckBox.Name = "tweetPointsCheckBox";
-            this.tweetPointsCheckBox.Size = new System.Drawing.Size(165, 20);
+            this.tweetPointsCheckBox.Size = new System.Drawing.Size(197, 22);
             this.tweetPointsCheckBox.TabIndex = 23;
             this.tweetPointsCheckBox.Text = "Show tweet points on map";
             this.tweetPointsCheckBox.UseVisualStyleBackColor = true;
@@ -158,11 +162,11 @@ namespace WindowsFormsApp.Presentation_Layer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("HelvLight", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(174, 20);
+            this.label1.Location = new System.Drawing.Point(63, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 22);
+            this.label1.Size = new System.Drawing.Size(128, 34);
             this.label1.TabIndex = 24;
             this.label1.Text = "Settings";
             // 
@@ -172,20 +176,34 @@ namespace WindowsFormsApp.Presentation_Layer
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.saveButton.ForeColor = System.Drawing.Color.White;
-            this.saveButton.Location = new System.Drawing.Point(337, 283);
+            this.saveButton.Location = new System.Drawing.Point(27, 284);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(63, 32);
+            this.saveButton.Size = new System.Drawing.Size(75, 31);
             this.saveButton.TabIndex = 25;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
             // 
             // dragPanel
             // 
+            this.dragPanel.Controls.Add(this.label1);
             this.dragPanel.Location = new System.Drawing.Point(2, -1);
             this.dragPanel.Name = "dragPanel";
             this.dragPanel.Size = new System.Drawing.Size(430, 57);
             this.dragPanel.TabIndex = 26;
             this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkBox1.Font = new System.Drawing.Font("HelvLight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(29, 99);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(213, 22);
+            this.checkBox1.TabIndex = 27;
+            this.checkBox1.Text = "Show emotional weight scale";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -193,8 +211,8 @@ namespace WindowsFormsApp.Presentation_Layer
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(431, 327);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tweetPointsCheckBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.localizationComboBox);
@@ -210,6 +228,8 @@ namespace WindowsFormsApp.Presentation_Layer
             this.Name = "SettingsForm";
             this.Text = "SettingsForm";
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).EndInit();
+            this.dragPanel.ResumeLayout(false);
+            this.dragPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +250,6 @@ namespace WindowsFormsApp.Presentation_Layer
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Panel dragPanel;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

@@ -31,10 +31,12 @@ namespace WindowsFormsApp
         public Form1()
         {
             InitializeComponent();
+            //chooseFileListView.Columns.Add();
             chooseFile.Visible = false;
             screenshotButton.Visible = false;
             getInfoButton.Visible = false;
             settingsButton.Visible = false;
+            chooseFileListView.Visible = false;
             SetMaximumWindowsSize();
             this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
             LoadMap("cali_tweets2014.txt");
@@ -253,6 +255,7 @@ namespace WindowsFormsApp
                 menuButton.Image = Image.FromFile("../../Presentation Layer/Interface/menuToo1.png");
                 this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
             }
+            chooseFile_Click(sender, e);
             chooseFile.Visible = !chooseFile.Visible;
             screenshotButton.Visible = !screenshotButton.Visible;
             getInfoButton.Visible = !getInfoButton.Visible;
@@ -360,7 +363,13 @@ namespace WindowsFormsApp
 
         private void chooseFile_Click(object sender, EventArgs e)
         {
-
+            if (chooseFile.Visible)
+            {
+                chooseFileListView.Visible = !chooseFileListView.Visible;
+                Directory.GetFiles(@"..\..\Data Layer\Data", "*.txt").ToList().ForEach(x =>
+                chooseFileListView.Items.Add(Path.GetFileNameWithoutExtension(x)));
+            }
+            else { return; }
         }
 
         private void getInfoButton_Click(object sender, EventArgs e)
@@ -423,6 +432,12 @@ namespace WindowsFormsApp
                 tweetOverlay.IsVisibile = true;
             }
             else tweetOverlay.IsVisibile = false;
+        }
+
+        private void chooseFileListView_ItemActivate(object sender, EventArgs e)
+        {
+            LoadMap(chooseFileListView.SelectedItems[0].Text.ToString() + ".txt");
+            menuButton_Click(sender, e);
         }
     }
 }
