@@ -276,18 +276,19 @@
             this.chooseFileListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chooseFileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.chooseFileListView.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chooseFileListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chooseFileListView.ForeColor = System.Drawing.Color.White;
             this.chooseFileListView.HideSelection = false;
             this.chooseFileListView.Location = new System.Drawing.Point(225, 62);
             this.chooseFileListView.MultiSelect = false;
             this.chooseFileListView.Name = "chooseFileListView";
             this.chooseFileListView.Scrollable = false;
-            this.chooseFileListView.Size = new System.Drawing.Size(161, 202);
+            this.chooseFileListView.Size = new System.Drawing.Size(161, 196);
             this.chooseFileListView.TabIndex = 18;
             this.chooseFileListView.UseCompatibleStateImageBehavior = false;
             this.chooseFileListView.View = System.Windows.Forms.View.List;
             this.chooseFileListView.ItemActivate += new System.EventHandler(this.chooseFileListView_ItemActivate);
+            this.chooseFileListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chooseFileListView_MouseClick);
             // 
             // columnHeader1
             // 
