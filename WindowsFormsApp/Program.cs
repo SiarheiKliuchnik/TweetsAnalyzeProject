@@ -19,4 +19,13 @@ namespace WindowsFormsApp
             Application.Run(new Form1());
         }
     }
+
+    static class Data
+    {
+        public static string Directory { get; set; } = @"c:\temp\";
+        public static bool EmotionPanelCheckBoxChecked { get; set; } = true;
+        public static bool TweetPointsCheckBoxChecked { get; set; } = true;
+
+        public static string CurrentCultureName { get; set; }
+    }
 }

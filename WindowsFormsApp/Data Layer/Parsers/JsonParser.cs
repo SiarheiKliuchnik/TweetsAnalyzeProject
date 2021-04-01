@@ -12,12 +12,12 @@ namespace WindowsFormsApp
 {
     static class JsonParser
     {
-        public static List<State> Parse(string path = "..\\..\\..\\Data\\states.json")
+        public static Dictionary<string, State> Parse(string path = "..\\..\\..\\Data\\states.json")
         {
             string jsonString = new StreamReader(path).ReadToEnd();
             JObject jsonStates = JObject.Parse(jsonString);
 
-            List<State> states = new List<State>();
+            Dictionary<string, State> states = new Dictionary<string, State>();
 
             foreach(var s in jsonStates)
             {
@@ -25,22 +25,40 @@ namespace WindowsFormsApp
                 state.Postcode = s.Key;
                 foreach(var polygons in s.Value)
                 {
-                    List<List<Coordinates>> list1 = new List<List<Coordinates>>();
+                    List<List<Coordinates>> polygon = new List<List<Coordinates>>();
                     foreach (var p in polygons)
                     {
-                        List<Coordinates> list2 = new List<Coordinates>();
+                        List<Coordinates> point = new List<Coordinates>();
                         foreach(var pair in p)
                         {
                             double x = Double.Parse(pair.First.ToString());
                             double y = Double.Parse(pair.Last.ToString());
+                            if(x>state.max_long)
+                            {
+                                state.max_long = x;
+                            }
+                            if(x<state.min_long)
+                            {
+                                state.min_long = x;
+                            }
+
+                            if(y>state.max_lat)
+                            {
+                                state.max_lat = y;
+                            }
+                            if (y< state.min_lat)
+                            {
+                                state.min_lat = y;
+                            }
+                            
                             Coordinates c = new Coordinates(x, y);
-                            list2.Add(c);
-                            list1.Add(list2);
+                            point.Add(c);
+                            polygon.Add(point);
                         }
                     }
-                    state.Polygons.Add(list1);
+                    state.Polygons.Add(polygon);
                 }
-                states.Add(state);
+                states.Add(s.Key, state);
             }
             return states;
         }

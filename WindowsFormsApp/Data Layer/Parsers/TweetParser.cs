@@ -49,39 +49,5 @@ namespace WindowsFormsApp
                 return new Tweet(sentences[0].Trim('[', ']'), sentences[2], sentences[3]);
         }
 
-        public static void TextParse(Tweet tweet)
-        {
-            char[] EndOfSentences = { '.', '?', '!', '\r', '\n' };
-
-            tweet.Text = tweet.Text.Trim();
-            tweet.Text = System.Text.RegularExpressions.Regex.Replace(tweet.Text, @" +", " ");
-            Regex rx = new Regex(@"(?<=[\.!\? ])\s+");
-            string[] sentences = rx.Split(tweet.Text);
-            foreach (var item in sentences)
-            {
-                Sentence sentence = new Sentence();
-                sentence.Content = item;
-                tweet.sentences.Add(sentence);
-            }
-        }
-        public static void SentenceParser(Sentence sentence)
-        {
-            char[] EndOfWords = { '.', '!', '?', ' ', ':', ';', ',' };
-            Word word = new Word();
-            foreach (char symbol in sentence.Content)
-            {
-                if (Array.Exists(EndOfWords, element => element == symbol))
-                {
-                    if (word.Content == null) continue;
-                    word.PunctuationMark_ = symbol;
-                    sentence.Words_.Add(new Word(word));
-                    word = new Word();
-                }
-                else
-                {
-                    word.Content += symbol;
-                }
-            }
-        }
     }
 }
