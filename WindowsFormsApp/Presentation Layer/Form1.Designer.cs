@@ -86,6 +86,8 @@
             this.gMapControl.Zoom = 0D;
             this.gMapControl.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gMapControl_OnMarkerClick);
             this.gMapControl.OnPolygonClick += new GMap.NET.WindowsForms.PolygonClick(this.gMapControl_OnPolygonClick);
+            this.gMapControl.OnMarkerEnter += new GMap.NET.WindowsForms.MarkerEnter(this.gMapControl_OnMarkerEnter);
+            this.gMapControl.OnMarkerLeave += new GMap.NET.WindowsForms.MarkerLeave(this.gMapControl_OnMarkerLeave);
             this.gMapControl.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // panel1

@@ -490,6 +490,12 @@ namespace WindowsFormsApp
         {
 
         }
+
+        private void gMapControl_OnMarkerLeave(GMapMarker item)
+        {
+            gmapToolTip.Hide(gMapControl);
+        }
     }
 }
+
 
