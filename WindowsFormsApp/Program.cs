@@ -23,8 +23,8 @@ namespace WindowsFormsApp
     static class Data
     {
         public static string Directory { get; set; }
-        public static bool isCheckBoxChecked { get; set; }
-
+        public static bool TweetPointsCheckBoxChecked { get; set; } = true;
+        public static bool EmotionPanelCheckBoxChecked { get; set; } = true;
 
     }
 }

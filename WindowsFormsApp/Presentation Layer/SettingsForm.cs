@@ -9,15 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
-
+using WindowsFormsApp;
 namespace WindowsFormsApp.Presentation_Layer
 {
     public partial class SettingsForm : Form
     {
+        public Form mainForm;
         public SettingsForm()
         {
             InitializeComponent();
         }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -58,6 +60,27 @@ namespace WindowsFormsApp.Presentation_Layer
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmotionScaleCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Data.EmotionPanelCheckBoxChecked = EmotionScaleCheckBox.Checked;
+        }
+
+        private void tweetPointsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Data.TweetPointsCheckBoxChecked = tweetPointsCheckBox.Checked;
+        }
+
+        private void SettingsForm_Load(object sender, EventArgs e)
+        {
+            tweetPointsCheckBox.Checked = Data.TweetPointsCheckBoxChecked;
+            EmotionScaleCheckBox.Checked = Data.EmotionPanelCheckBoxChecked;
         }
     }
 }
