@@ -22,16 +22,6 @@ namespace WindowsFormsApp
                 if (tweet!=null)
                 tweets.Add(tweet);
             }
-
-            foreach (var tweet in tweets)
-            {
-                TextParse(tweet);
-
-                foreach (var sentence in tweet.sentences)
-                {
-                    SentenceParser(sentence);
-                }
-            }
             return tweets;
 
             //catch (Exception ex)
