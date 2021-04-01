@@ -66,7 +66,7 @@
             this.gMapControl.GrayScaleMode = false;
             this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl.LevelsKeepInMemmory = 5;
-            this.gMapControl.Location = new System.Drawing.Point(12, 32);
+            this.gMapControl.Location = new System.Drawing.Point(0, 32);
             this.gMapControl.Margin = new System.Windows.Forms.Padding(2);
             this.gMapControl.MarkersEnabled = true;
             this.gMapControl.MaxZoom = 2;
@@ -81,7 +81,7 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(1304, 504);
+            this.gMapControl.Size = new System.Drawing.Size(1296, 504);
             this.gMapControl.TabIndex = 1;
             this.gMapControl.Zoom = 0D;
             this.gMapControl.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gMapControl_OnMarkerClick);
@@ -274,6 +274,10 @@
             this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
+            // gmapToolTip
+            // 
+            this.gmapToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.gmapToolTip_Popup);
+            // 
             // chooseFileListView
             // 
             this.chooseFileListView.BackColor = System.Drawing.Color.Black;
@@ -292,6 +296,7 @@
             this.chooseFileListView.UseCompatibleStateImageBehavior = false;
             this.chooseFileListView.View = System.Windows.Forms.View.List;
             this.chooseFileListView.ItemActivate += new System.EventHandler(this.chooseFileListView_ItemActivate);
+            this.chooseFileListView.SelectedIndexChanged += new System.EventHandler(this.chooseFileListView_SelectedIndexChanged);
             this.chooseFileListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chooseFileListView_MouseClick);
             // 
             // columnHeader1
@@ -310,6 +315,7 @@
             this.loadScreen.Size = new System.Drawing.Size(1300, 622);
             this.loadScreen.TabIndex = 19;
             this.loadScreen.TabStop = false;
+            this.loadScreen.Click += new System.EventHandler(this.loadScreen_Click);
             // 
             // logoPictureBox
             // 
@@ -322,6 +328,7 @@
             this.logoPictureBox.Size = new System.Drawing.Size(180, 180);
             this.logoPictureBox.TabIndex = 20;
             this.logoPictureBox.TabStop = false;
+            this.logoPictureBox.Click += new System.EventHandler(this.logoPictureBox_Click);
             // 
             // Form1
             // 

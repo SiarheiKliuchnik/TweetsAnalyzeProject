@@ -470,6 +470,26 @@ namespace WindowsFormsApp
             gMapControl.Zoom += 0.001;
             gMapControl.Zoom -= 0.001;
         }
+
+        private void logoPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gmapToolTip_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void chooseFileListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadScreen_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
