@@ -66,8 +66,8 @@
             this.gMapControl.GrayScaleMode = false;
             this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl.LevelsKeepInMemmory = 5;
-            this.gMapControl.Location = new System.Drawing.Point(0, 39);
-            this.gMapControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gMapControl.Location = new System.Drawing.Point(0, 32);
+            this.gMapControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gMapControl.MarkersEnabled = true;
             this.gMapControl.MaxZoom = 2;
             this.gMapControl.MinZoom = 2;
@@ -81,7 +81,7 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(1728, 620);
+            this.gMapControl.Size = new System.Drawing.Size(1296, 504);
             this.gMapControl.TabIndex = 1;
             this.gMapControl.Zoom = 0D;
             this.gMapControl.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gMapControl_OnMarkerClick);
@@ -94,10 +94,9 @@
             // 
             this.EmotionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EmotionPanel.BackColor = System.Drawing.Color.Black;
-            this.EmotionPanel.Location = new System.Drawing.Point(4, 21);
-            this.EmotionPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.EmotionPanel.Location = new System.Drawing.Point(3, 17);
             this.EmotionPanel.Name = "EmotionPanel";
-            this.EmotionPanel.Size = new System.Drawing.Size(300, 55);
+            this.EmotionPanel.Size = new System.Drawing.Size(225, 45);
             this.EmotionPanel.TabIndex = 4;
             this.EmotionPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -106,9 +105,8 @@
             this.header.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(0, 0);
-            this.header.Margin = new System.Windows.Forms.Padding(4);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(1728, 76);
+            this.header.Size = new System.Drawing.Size(1296, 62);
             this.header.TabIndex = 6;
             this.header.TabStop = false;
             this.header.Click += new System.EventHandler(this.header_Click);
@@ -118,10 +116,9 @@
             // 
             this.logoAkhmat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logoAkhmat.BackgroundImage")));
             this.logoAkhmat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logoAkhmat.Location = new System.Drawing.Point(16, 2);
-            this.logoAkhmat.Margin = new System.Windows.Forms.Padding(4);
+            this.logoAkhmat.Location = new System.Drawing.Point(12, 2);
             this.logoAkhmat.Name = "logoAkhmat";
-            this.logoAkhmat.Size = new System.Drawing.Size(76, 70);
+            this.logoAkhmat.Size = new System.Drawing.Size(57, 57);
             this.logoAkhmat.TabIndex = 7;
             this.logoAkhmat.TabStop = false;
             this.logoAkhmat.Click += new System.EventHandler(this.logoAkhmat_Click_1);
@@ -134,10 +131,9 @@
             this.chooseFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chooseFile.ForeColor = System.Drawing.Color.White;
             this.chooseFile.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chooseFile.Location = new System.Drawing.Point(104, 76);
-            this.chooseFile.Margin = new System.Windows.Forms.Padding(4);
+            this.chooseFile.Location = new System.Drawing.Point(78, 62);
             this.chooseFile.Name = "chooseFile";
-            this.chooseFile.Size = new System.Drawing.Size(200, 49);
+            this.chooseFile.Size = new System.Drawing.Size(150, 40);
             this.chooseFile.TabIndex = 9;
             this.chooseFile.Text = "Choose file";
             this.chooseFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -154,10 +150,9 @@
             this.menuButton.ForeColor = System.Drawing.Color.White;
             this.menuButton.Image = ((System.Drawing.Image)(resources.GetObject("menuButton.Image")));
             this.menuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.menuButton.Location = new System.Drawing.Point(104, 7);
-            this.menuButton.Margin = new System.Windows.Forms.Padding(4);
+            this.menuButton.Location = new System.Drawing.Point(78, 6);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(149, 64);
+            this.menuButton.Size = new System.Drawing.Size(112, 52);
             this.menuButton.TabIndex = 10;
             this.menuButton.Text = "Menu";
             this.menuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -173,10 +168,9 @@
             this.closeButton.FlatAppearance.BorderSize = 0;
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.ForeColor = System.Drawing.Color.Transparent;
-            this.closeButton.Location = new System.Drawing.Point(1699, 2);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.closeButton.Location = new System.Drawing.Point(1274, 2);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(27, 31);
+            this.closeButton.Size = new System.Drawing.Size(20, 25);
             this.closeButton.TabIndex = 11;
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -192,10 +186,9 @@
             this.fullScreenButton.FlatAppearance.BorderSize = 0;
             this.fullScreenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fullScreenButton.ForeColor = System.Drawing.Color.Transparent;
-            this.fullScreenButton.Location = new System.Drawing.Point(1668, 2);
-            this.fullScreenButton.Margin = new System.Windows.Forms.Padding(4);
+            this.fullScreenButton.Location = new System.Drawing.Point(1251, 2);
             this.fullScreenButton.Name = "fullScreenButton";
-            this.fullScreenButton.Size = new System.Drawing.Size(27, 31);
+            this.fullScreenButton.Size = new System.Drawing.Size(20, 25);
             this.fullScreenButton.TabIndex = 12;
             this.fullScreenButton.UseVisualStyleBackColor = false;
             this.fullScreenButton.Click += new System.EventHandler(this.fullScreenButton_Click);
@@ -211,10 +204,9 @@
             this.minimizeButton.FlatAppearance.BorderSize = 0;
             this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeButton.ForeColor = System.Drawing.Color.Transparent;
-            this.minimizeButton.Location = new System.Drawing.Point(1636, 2);
-            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.minimizeButton.Location = new System.Drawing.Point(1227, 2);
             this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Size = new System.Drawing.Size(27, 31);
+            this.minimizeButton.Size = new System.Drawing.Size(20, 25);
             this.minimizeButton.TabIndex = 13;
             this.minimizeButton.UseVisualStyleBackColor = false;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
@@ -227,10 +219,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tweetInfoPanel.BackColor = System.Drawing.Color.Black;
             this.tweetInfoPanel.Controls.Add(this.EmotionPanel);
-            this.tweetInfoPanel.Location = new System.Drawing.Point(0, 693);
-            this.tweetInfoPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.tweetInfoPanel.Location = new System.Drawing.Point(0, 563);
             this.tweetInfoPanel.Name = "tweetInfoPanel";
-            this.tweetInfoPanel.Size = new System.Drawing.Size(1733, 80);
+            this.tweetInfoPanel.Size = new System.Drawing.Size(1300, 65);
             this.tweetInfoPanel.TabIndex = 14;
             this.tweetInfoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tweetInfoPanel_Paint);
             // 
@@ -242,10 +233,9 @@
             this.screenshotButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.screenshotButton.ForeColor = System.Drawing.Color.White;
             this.screenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.screenshotButton.Location = new System.Drawing.Point(104, 126);
-            this.screenshotButton.Margin = new System.Windows.Forms.Padding(4);
+            this.screenshotButton.Location = new System.Drawing.Point(78, 102);
             this.screenshotButton.Name = "screenshotButton";
-            this.screenshotButton.Size = new System.Drawing.Size(200, 49);
+            this.screenshotButton.Size = new System.Drawing.Size(150, 40);
             this.screenshotButton.TabIndex = 15;
             this.screenshotButton.Text = "Get screenshot";
             this.screenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -260,10 +250,9 @@
             this.getInfoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getInfoButton.ForeColor = System.Drawing.Color.White;
             this.getInfoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.getInfoButton.Location = new System.Drawing.Point(104, 171);
-            this.getInfoButton.Margin = new System.Windows.Forms.Padding(4);
+            this.getInfoButton.Location = new System.Drawing.Point(78, 139);
             this.getInfoButton.Name = "getInfoButton";
-            this.getInfoButton.Size = new System.Drawing.Size(200, 49);
+            this.getInfoButton.Size = new System.Drawing.Size(150, 40);
             this.getInfoButton.TabIndex = 16;
             this.getInfoButton.Text = "Get info into .txt";
             this.getInfoButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -278,10 +267,9 @@
             this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingsButton.ForeColor = System.Drawing.Color.White;
             this.settingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.settingsButton.Location = new System.Drawing.Point(104, 220);
-            this.settingsButton.Margin = new System.Windows.Forms.Padding(4);
+            this.settingsButton.Location = new System.Drawing.Point(78, 179);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(200, 49);
+            this.settingsButton.Size = new System.Drawing.Size(150, 40);
             this.settingsButton.TabIndex = 17;
             this.settingsButton.Text = "Settings";
             this.settingsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -301,12 +289,11 @@
             this.chooseFileListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chooseFileListView.ForeColor = System.Drawing.Color.White;
             this.chooseFileListView.HideSelection = false;
-            this.chooseFileListView.Location = new System.Drawing.Point(300, 76);
-            this.chooseFileListView.Margin = new System.Windows.Forms.Padding(4);
+            this.chooseFileListView.Location = new System.Drawing.Point(225, 62);
             this.chooseFileListView.MultiSelect = false;
             this.chooseFileListView.Name = "chooseFileListView";
             this.chooseFileListView.Scrollable = false;
-            this.chooseFileListView.Size = new System.Drawing.Size(215, 241);
+            this.chooseFileListView.Size = new System.Drawing.Size(161, 196);
             this.chooseFileListView.TabIndex = 18;
             this.chooseFileListView.UseCompatibleStateImageBehavior = false;
             this.chooseFileListView.View = System.Windows.Forms.View.List;
@@ -325,10 +312,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.loadScreen.BackColor = System.Drawing.Color.Black;
-            this.loadScreen.Location = new System.Drawing.Point(-5, 0);
-            this.loadScreen.Margin = new System.Windows.Forms.Padding(4);
+            this.loadScreen.Location = new System.Drawing.Point(-4, 0);
             this.loadScreen.Name = "loadScreen";
-            this.loadScreen.Size = new System.Drawing.Size(1733, 766);
+            this.loadScreen.Size = new System.Drawing.Size(1300, 622);
             this.loadScreen.TabIndex = 19;
             this.loadScreen.TabStop = false;
             this.loadScreen.Click += new System.EventHandler(this.loadScreen_Click);
@@ -339,23 +325,22 @@
             this.logoPictureBox.BackColor = System.Drawing.Color.Black;
             this.logoPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.BackgroundImage")));
             this.logoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logoPictureBox.Location = new System.Drawing.Point(735, 278);
-            this.logoPictureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.logoPictureBox.Location = new System.Drawing.Point(551, 226);
             this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(240, 222);
+            this.logoPictureBox.Size = new System.Drawing.Size(180, 180);
             this.logoPictureBox.TabIndex = 20;
             this.logoPictureBox.TabStop = false;
             this.logoPictureBox.Click += new System.EventHandler(this.logoPictureBox_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1728, 764);
+            this.ClientSize = new System.Drawing.Size(1296, 621);
+            this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.fullScreenButton);
             this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.loadScreen);
             this.Controls.Add(this.chooseFileListView);
             this.Controls.Add(this.settingsButton);
@@ -369,8 +354,8 @@
             this.Controls.Add(this.gMapControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(533, 394);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(400, 320);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

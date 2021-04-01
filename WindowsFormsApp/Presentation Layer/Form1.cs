@@ -33,16 +33,22 @@ namespace WindowsFormsApp
         {
             InitializeComponent();
             LoadingScreenOnOff(false);
-            //chooseFileListView.Columns.Add();
+         
             chooseFile.Visible = false;
             screenshotButton.Visible = false;
             getInfoButton.Visible = false;
             settingsButton.Visible = false;
             chooseFileListView.Visible = false;
+
             SetMaximumWindowsSize();
+
             this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
+
             dataBase.ParseSentiments();
             dataBase.ParseJSON();
+
+            ParseSettings();
+            EmotionPanelCheckBoxChecked();
         }
         protected override CreateParams CreateParams
         {
@@ -141,7 +147,7 @@ namespace WindowsFormsApp
 
         private void gMapControl_OnPolygonClick(GMapPolygon item, MouseEventArgs e)
         {
-            MessageBox.Show("TEST");
+            
         }
 
         //private void Uploadbutton_Click(object sender, EventArgs e)
@@ -220,20 +226,7 @@ namespace WindowsFormsApp
 
         private void gMapControl_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
-            //Tweet tweet = new Tweet(item.Position, item.ToolTipText);
-            //State state = DetermineState(mapStates, tweet);
-            //foreach (var tw in state.Tweets)
-            //{
-            //    if (tw.Text == tweet.Text && (tw.Location.Latitude == tweet.Location.Latitude && tw.Location.Longtitude == tweet.Location.Longtitude))
-            //    {
-            //        label1.Text = "State: " + state.Postcode;
-            //        label4.Text = tw.Weight.ToString();
-            //        label4.ForeColor = Coloring.SetColors(tw.Weight);
-            //        label4.BackColor = Color.Black;
-            //        label3.Text = "Tweet: " + tw.Text;
-
-            //    }
-            //}
+            
         }
         private State DetermineState(Dictionary<string, State> states, Tweet tweet)
         {
@@ -356,10 +349,10 @@ namespace WindowsFormsApp
         private void screenshotButton_Click(object sender, EventArgs e)
         {
             using (var bmp = new Bitmap(gMapControl.Width, gMapControl.Height))
-                {
+            {
                  gMapControl.DrawToBitmap(bmp, new Rectangle(0, 0, this.Width, this.Height));
                  bmp.Save(@"c:\temp\screnshot.png");
-                }
+            }
             menuButton_Click(sender, e);
         }
 
@@ -392,25 +385,29 @@ namespace WindowsFormsApp
 
         private void getInfoButton_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream(@"c:\temp\test.txt", FileMode.OpenOrCreate);
+            FileStream fs = new FileStream(@"c:\temp\info.txt", FileMode.Create);
             StreamWriter w = new StreamWriter(fs, Encoding.Default);
             foreach (var state in mapStates.Values)
             {
                 if (state.Postcode.Equals("UNKNOWN")) continue;
-                w.WriteLine($"{state.Postcode} ({state.Weight.ToString()}):");
-                foreach (var tweet in state.Tweets)
+                if (!float.IsNaN(state.Weight))
                 {
-                    if (!float.IsNaN(tweet.Weight))
-                    {
-                        w.WriteLine(tweet.Weight.ToString() + " | " + tweet.Text);
-                        w.Write("Valuable words or phrases: ");
-                        for (int i = 0; i<tweet.valueableWords.Count-1; i++)
-                        {
-                            w.Write(tweet.valueableWords[i] + ", ");
-                        }
-                        w.WriteLine(tweet.valueableWords[tweet.valueableWords.Count - 1] + ".");
-                    }
+                    w.WriteLine($"{state.Postcode} ({state.Weight.ToString()}):");
                 }
+                else w.WriteLine($"{state.Postcode} (No data):");
+                foreach (var tweet in state.Tweets)
+                    {
+                        if (!float.IsNaN(tweet.Weight))
+                        {
+                            w.WriteLine(tweet.Weight.ToString() + " | " + tweet.Text);
+                            w.Write("Valuable words or phrases: ");
+                            for (int i = 0; i < tweet.valueableWords.Count - 1; i++)
+                            {
+                                w.Write(tweet.valueableWords[i] + ", ");
+                            }
+                            w.WriteLine(tweet.valueableWords[tweet.valueableWords.Count - 1] + ".");
+                        }
+                    }
                 w.WriteLine();
             }
             menuButton_Click(sender, e);
@@ -447,19 +444,11 @@ namespace WindowsFormsApp
 
         private void EmotionPanelCheckBoxChecked()
         {
-            if (Data.EmotionPanelCheckBoxChecked)
-            {
-                EmotionPanel.Visible = true;
-            }
-            else EmotionPanel.Visible = false;
+            EmotionPanel.Visible = Data.EmotionPanelCheckBoxChecked;
         }
         private void TweetPointCheckBoxChecked()
         {
-            if (Data.TweetPointsCheckBoxChecked)
-            {
-                tweetOverlay.IsVisibile = true;
-            }
-            else tweetOverlay.IsVisibile = false;
+            tweetOverlay.IsVisibile = Data.TweetPointsCheckBoxChecked;
         }
 
         private void chooseFileListView_ItemActivate(object sender, EventArgs e)
@@ -473,6 +462,8 @@ namespace WindowsFormsApp
             string path = chooseFileListView.SelectedItems[0].Text.ToString() + ".txt";
             menuButton_Click(sender, e);
             LoadMap(path);
+            EmotionPanelCheckBoxChecked();
+            TweetPointCheckBoxChecked();
         }
 
         private void RefreshMap()
@@ -505,6 +496,21 @@ namespace WindowsFormsApp
         private void gMapControl_OnMarkerLeave(GMapMarker item)
         {
             gmapToolTip.Hide(gMapControl);
+        }
+
+        private void ParseSettings(string path = @"..\\..\\..\\Data\\settings.cfg")
+        {
+            StreamReader sr = new StreamReader(path);
+            while(!sr.EndOfStream)
+            {
+                string s = sr.ReadLine();
+                string[] lines = s.Split(',');
+                Data.EmotionPanelCheckBoxChecked = Convert.ToBoolean(lines[0]);
+                Data.TweetPointsCheckBoxChecked= Convert.ToBoolean(lines[1]);
+                Data.Directory = lines[2];
+            }
+            sr.Close();
+            sr.Dispose();
         }
     }
 }
