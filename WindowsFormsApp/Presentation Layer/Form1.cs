@@ -66,7 +66,9 @@ namespace WindowsFormsApp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
+            gMapControl.ShowCenter = false;
+
         }
 
         private void gMapControl1_Load(object sender, EventArgs e)
