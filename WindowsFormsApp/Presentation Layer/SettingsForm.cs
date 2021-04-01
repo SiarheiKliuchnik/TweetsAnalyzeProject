@@ -14,12 +14,10 @@ namespace WindowsFormsApp.Presentation_Layer
 {
     public partial class SettingsForm : Form
     {
-        public Form mainForm;
         public SettingsForm()
         {
             InitializeComponent();
         }
-
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -62,14 +60,10 @@ namespace WindowsFormsApp.Presentation_Layer
 
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void SettingsForm_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void EmotionScaleCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Data.EmotionPanelCheckBoxChecked = EmotionScaleCheckBox.Checked;
+            tweetPointsCheckBox.Checked = Data.TweetPointsCheckBoxChecked;
+            EmotionScaleCheckBox.Checked = Data.EmotionPanelCheckBoxChecked;
         }
 
         private void tweetPointsCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -77,10 +71,9 @@ namespace WindowsFormsApp.Presentation_Layer
             Data.TweetPointsCheckBoxChecked = tweetPointsCheckBox.Checked;
         }
 
-        private void SettingsForm_Load(object sender, EventArgs e)
+        private void EmotionScaleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            tweetPointsCheckBox.Checked = Data.TweetPointsCheckBoxChecked;
-            EmotionScaleCheckBox.Checked = Data.EmotionPanelCheckBoxChecked;
+            Data.EmotionPanelCheckBoxChecked = EmotionScaleCheckBox.Checked;
         }
     }
 }

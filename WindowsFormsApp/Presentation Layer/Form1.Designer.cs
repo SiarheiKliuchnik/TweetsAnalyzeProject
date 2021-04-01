@@ -46,9 +46,13 @@
             this.gmapToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.chooseFileListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.loadScreen = new System.Windows.Forms.PictureBox();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.header)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).BeginInit();
             this.tweetInfoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadScreen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // gMapControl
@@ -62,7 +66,7 @@
             this.gMapControl.GrayScaleMode = false;
             this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl.LevelsKeepInMemmory = 5;
-            this.gMapControl.Location = new System.Drawing.Point(16, 39);
+            this.gMapControl.Location = new System.Drawing.Point(0, 39);
             this.gMapControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gMapControl.MarkersEnabled = true;
             this.gMapControl.MaxZoom = 2;
@@ -77,11 +81,13 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(1391, 620);
+            this.gMapControl.Size = new System.Drawing.Size(1728, 620);
             this.gMapControl.TabIndex = 1;
             this.gMapControl.Zoom = 0D;
             this.gMapControl.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gMapControl_OnMarkerClick);
             this.gMapControl.OnPolygonClick += new GMap.NET.WindowsForms.PolygonClick(this.gMapControl_OnPolygonClick);
+            this.gMapControl.OnMarkerEnter += new GMap.NET.WindowsForms.MarkerEnter(this.gMapControl_OnMarkerEnter);
+            this.gMapControl.OnMarkerLeave += new GMap.NET.WindowsForms.MarkerLeave(this.gMapControl_OnMarkerLeave);
             this.gMapControl.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // EmotionPanel
@@ -89,7 +95,7 @@
             this.EmotionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EmotionPanel.BackColor = System.Drawing.Color.Black;
             this.EmotionPanel.Location = new System.Drawing.Point(4, 21);
-            this.EmotionPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.EmotionPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EmotionPanel.Name = "EmotionPanel";
             this.EmotionPanel.Size = new System.Drawing.Size(300, 55);
             this.EmotionPanel.TabIndex = 4;
@@ -100,9 +106,9 @@
             this.header.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(0, 0);
-            this.header.Margin = new System.Windows.Forms.Padding(4);
+            this.header.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(1532, 76);
+            this.header.Size = new System.Drawing.Size(1728, 76);
             this.header.TabIndex = 6;
             this.header.TabStop = false;
             this.header.Click += new System.EventHandler(this.header_Click);
@@ -113,7 +119,7 @@
             this.logoAkhmat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logoAkhmat.BackgroundImage")));
             this.logoAkhmat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.logoAkhmat.Location = new System.Drawing.Point(16, 2);
-            this.logoAkhmat.Margin = new System.Windows.Forms.Padding(4);
+            this.logoAkhmat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.logoAkhmat.Name = "logoAkhmat";
             this.logoAkhmat.Size = new System.Drawing.Size(76, 70);
             this.logoAkhmat.TabIndex = 7;
@@ -129,7 +135,7 @@
             this.chooseFile.ForeColor = System.Drawing.Color.White;
             this.chooseFile.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chooseFile.Location = new System.Drawing.Point(104, 76);
-            this.chooseFile.Margin = new System.Windows.Forms.Padding(4);
+            this.chooseFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chooseFile.Name = "chooseFile";
             this.chooseFile.Size = new System.Drawing.Size(200, 49);
             this.chooseFile.TabIndex = 9;
@@ -149,7 +155,7 @@
             this.menuButton.Image = ((System.Drawing.Image)(resources.GetObject("menuButton.Image")));
             this.menuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.menuButton.Location = new System.Drawing.Point(104, 7);
-            this.menuButton.Margin = new System.Windows.Forms.Padding(4);
+            this.menuButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.menuButton.Name = "menuButton";
             this.menuButton.Size = new System.Drawing.Size(149, 64);
             this.menuButton.TabIndex = 10;
@@ -167,8 +173,8 @@
             this.closeButton.FlatAppearance.BorderSize = 0;
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.ForeColor = System.Drawing.Color.Transparent;
-            this.closeButton.Location = new System.Drawing.Point(1503, 2);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.closeButton.Location = new System.Drawing.Point(1699, 2);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(27, 31);
             this.closeButton.TabIndex = 11;
@@ -186,8 +192,8 @@
             this.fullScreenButton.FlatAppearance.BorderSize = 0;
             this.fullScreenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fullScreenButton.ForeColor = System.Drawing.Color.Transparent;
-            this.fullScreenButton.Location = new System.Drawing.Point(1472, 2);
-            this.fullScreenButton.Margin = new System.Windows.Forms.Padding(4);
+            this.fullScreenButton.Location = new System.Drawing.Point(1668, 2);
+            this.fullScreenButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fullScreenButton.Name = "fullScreenButton";
             this.fullScreenButton.Size = new System.Drawing.Size(27, 31);
             this.fullScreenButton.TabIndex = 12;
@@ -205,8 +211,8 @@
             this.minimizeButton.FlatAppearance.BorderSize = 0;
             this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeButton.ForeColor = System.Drawing.Color.Transparent;
-            this.minimizeButton.Location = new System.Drawing.Point(1440, 2);
-            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.minimizeButton.Location = new System.Drawing.Point(1636, 2);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(27, 31);
             this.minimizeButton.TabIndex = 13;
@@ -222,9 +228,9 @@
             this.tweetInfoPanel.BackColor = System.Drawing.Color.Black;
             this.tweetInfoPanel.Controls.Add(this.EmotionPanel);
             this.tweetInfoPanel.Location = new System.Drawing.Point(0, 693);
-            this.tweetInfoPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.tweetInfoPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tweetInfoPanel.Name = "tweetInfoPanel";
-            this.tweetInfoPanel.Size = new System.Drawing.Size(1537, 80);
+            this.tweetInfoPanel.Size = new System.Drawing.Size(1733, 80);
             this.tweetInfoPanel.TabIndex = 14;
             this.tweetInfoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tweetInfoPanel_Paint);
             // 
@@ -237,7 +243,7 @@
             this.screenshotButton.ForeColor = System.Drawing.Color.White;
             this.screenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.screenshotButton.Location = new System.Drawing.Point(104, 126);
-            this.screenshotButton.Margin = new System.Windows.Forms.Padding(4);
+            this.screenshotButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.screenshotButton.Name = "screenshotButton";
             this.screenshotButton.Size = new System.Drawing.Size(200, 49);
             this.screenshotButton.TabIndex = 15;
@@ -255,7 +261,7 @@
             this.getInfoButton.ForeColor = System.Drawing.Color.White;
             this.getInfoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.getInfoButton.Location = new System.Drawing.Point(104, 171);
-            this.getInfoButton.Margin = new System.Windows.Forms.Padding(4);
+            this.getInfoButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.getInfoButton.Name = "getInfoButton";
             this.getInfoButton.Size = new System.Drawing.Size(200, 49);
             this.getInfoButton.TabIndex = 16;
@@ -273,7 +279,7 @@
             this.settingsButton.ForeColor = System.Drawing.Color.White;
             this.settingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.settingsButton.Location = new System.Drawing.Point(104, 220);
-            this.settingsButton.Margin = new System.Windows.Forms.Padding(4);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(200, 49);
             this.settingsButton.TabIndex = 17;
@@ -281,6 +287,10 @@
             this.settingsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // gmapToolTip
+            // 
+            this.gmapToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.gmapToolTip_Popup);
             // 
             // chooseFileListView
             // 
@@ -292,33 +302,68 @@
             this.chooseFileListView.ForeColor = System.Drawing.Color.White;
             this.chooseFileListView.HideSelection = false;
             this.chooseFileListView.Location = new System.Drawing.Point(300, 76);
-            this.chooseFileListView.Margin = new System.Windows.Forms.Padding(4);
+            this.chooseFileListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chooseFileListView.MultiSelect = false;
             this.chooseFileListView.Name = "chooseFileListView";
             this.chooseFileListView.Scrollable = false;
-            this.chooseFileListView.Size = new System.Drawing.Size(215, 249);
+            this.chooseFileListView.Size = new System.Drawing.Size(215, 241);
             this.chooseFileListView.TabIndex = 18;
             this.chooseFileListView.UseCompatibleStateImageBehavior = false;
             this.chooseFileListView.View = System.Windows.Forms.View.List;
             this.chooseFileListView.ItemActivate += new System.EventHandler(this.chooseFileListView_ItemActivate);
+            this.chooseFileListView.SelectedIndexChanged += new System.EventHandler(this.chooseFileListView_SelectedIndexChanged);
+            this.chooseFileListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chooseFileListView_MouseClick);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "";
             this.columnHeader1.Width = 160;
             // 
+            // loadScreen
+            // 
+            this.loadScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadScreen.BackColor = System.Drawing.Color.Black;
+            this.loadScreen.Location = new System.Drawing.Point(-4, 0);
+            this.loadScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.loadScreen.Name = "loadScreen";
+            this.loadScreen.Size = new System.Drawing.Size(1733, 766);
+            this.loadScreen.TabIndex = 19;
+            this.loadScreen.TabStop = false;
+            this.loadScreen.Click += new System.EventHandler(this.loadScreen_Click);
+            // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.logoPictureBox.BackColor = System.Drawing.Color.Black;
+            this.logoPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.BackgroundImage")));
+            this.logoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.logoPictureBox.Location = new System.Drawing.Point(735, 278);
+            this.logoPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(240, 222);
+            this.logoPictureBox.TabIndex = 20;
+            this.logoPictureBox.TabStop = false;
+            this.logoPictureBox.Click += new System.EventHandler(this.logoPictureBox_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1532, 764);
+            this.ClientSize = new System.Drawing.Size(1728, 764);
+            this.Controls.Add(this.logoPictureBox);
+            this.Controls.Add(this.minimizeButton);
+            this.Controls.Add(this.fullScreenButton);
             this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.loadScreen);
             this.Controls.Add(this.chooseFileListView);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.getInfoButton);
             this.Controls.Add(this.screenshotButton);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.fullScreenButton);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.menuButton);
             this.Controls.Add(this.chooseFile);
             this.Controls.Add(this.logoAkhmat);
@@ -335,6 +380,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.header)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).EndInit();
             this.tweetInfoPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.loadScreen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -356,6 +403,8 @@
         private System.Windows.Forms.ToolTip gmapToolTip;
         private System.Windows.Forms.ListView chooseFileListView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.PictureBox loadScreen;
+        private System.Windows.Forms.PictureBox logoPictureBox;
     }
 }
 

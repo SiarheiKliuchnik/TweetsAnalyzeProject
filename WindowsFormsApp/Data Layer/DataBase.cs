@@ -16,11 +16,10 @@ using GMap.NET.WindowsForms.Markers;
 
 namespace WindowsFormsApp
 {
-    class DataBase
+    internal class DataBase
     {
         public List<Tweet> tweets = new List<Tweet>();
         public Dictionary<string, State> states = new Dictionary<string, State>();
-        //public List<State> states = new List<State>();
         public Hashtable wordValues = new Hashtable();
         public HashSet<string> anyValuableWords = new HashSet<string>();
 
@@ -106,6 +105,15 @@ namespace WindowsFormsApp
                 }
             }
             return stateToReturn;
+        }
+
+        public void ClearTweets()
+        {
+            this.tweets.Clear();
+        }
+        public void ClearStates()
+        {
+            this.states.Clear();
         }
     }
 }
