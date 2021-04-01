@@ -32,6 +32,8 @@ namespace WindowsFormsApp
         {
             InitializeComponent();
             //chooseFileListView.Columns.Add();
+            logoPictureBox.Visible = false;
+            loadScreen.Visible = false;
             chooseFile.Visible = false;
             screenshotButton.Visible = false;
             getInfoButton.Visible = false;
@@ -41,6 +43,21 @@ namespace WindowsFormsApp
             this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
             LoadMap("cali_tweets2014.txt");
         }
+
+        private void loadScreenShowClose(bool active)
+        {
+            if (active)
+            {
+                logoPictureBox.Visible = false;
+                loadScreen.Visible = false;
+            }
+            else
+            {
+                logoPictureBox.Visible = true;
+                loadScreen.Visible = true;
+            }
+        }
+
         protected override CreateParams CreateParams
         {
             get
@@ -57,12 +74,6 @@ namespace WindowsFormsApp
         {
             //LoadListFileNames();
         }
-        //private void LoadListFileNames()
-        //{
-        //    Directory.GetFiles(@"..\..\Data Layer\Data", "*.txt").ToList().ForEach(x => ChooseFileSouceBox.Items.Add(Path.GetFileNameWithoutExtension(x)));
-        //    if (ChooseFileSouceBox.Items.Count != 0)
-        //        ChooseFileSouceBox.SelectedIndex = 0;
-        //}
         private void gMapControl1_Load(object sender, EventArgs e)
         {
             gMapControl.MapProvider = GMap.NET.MapProviders.YandexMapProvider.Instance;
@@ -140,11 +151,6 @@ namespace WindowsFormsApp
             MessageBox.Show("TEST");
         }
 
-        //private void Uploadbutton_Click(object sender, EventArgs e)
-        //{
-        //    LoadMap(ChooseFileSouceBox.SelectedItem.ToString() + ".txt");
-        //}
-
         private void DrawLegend()
         {
             Pen pen = new Pen(Color.Black, 0.002f);
@@ -175,6 +181,8 @@ namespace WindowsFormsApp
 
         private void LoadMap(string path)
         {
+            loadScreenShowClose(false);
+
             GMapOverlay polyOverlay = new GMapOverlay("polyOverlay");
             DataBase dataBase = new DataBase();
 
@@ -194,6 +202,8 @@ namespace WindowsFormsApp
             tweetOverlay = paintTweets(mapStates);
             
             gMapControl.Overlays.Add(tweetOverlay);
+
+            loadScreenShowClose(true);
         }
 
         //private void checkBox1_CheckedChanged(object sender, EventArgs e)

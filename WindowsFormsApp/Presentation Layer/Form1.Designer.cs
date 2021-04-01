@@ -46,9 +46,13 @@
             this.gmapToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.chooseFileListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.loadScreen = new System.Windows.Forms.PictureBox();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.header)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).BeginInit();
             this.tweetInfoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadScreen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // gMapControl
@@ -294,18 +298,44 @@
             this.columnHeader1.Text = "";
             this.columnHeader1.Width = 160;
             // 
+            // loadScreen
+            // 
+            this.loadScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadScreen.BackColor = System.Drawing.Color.Black;
+            this.loadScreen.Location = new System.Drawing.Point(-3, 0);
+            this.loadScreen.Name = "loadScreen";
+            this.loadScreen.Size = new System.Drawing.Size(1300, 622);
+            this.loadScreen.TabIndex = 19;
+            this.loadScreen.TabStop = false;
+            // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.logoPictureBox.BackColor = System.Drawing.Color.Black;
+            this.logoPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.BackgroundImage")));
+            this.logoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.logoPictureBox.Location = new System.Drawing.Point(551, 226);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(180, 180);
+            this.logoPictureBox.TabIndex = 20;
+            this.logoPictureBox.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1296, 621);
+            this.Controls.Add(this.logoPictureBox);
+            this.Controls.Add(this.minimizeButton);
+            this.Controls.Add(this.fullScreenButton);
+            this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.loadScreen);
             this.Controls.Add(this.chooseFileListView);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.getInfoButton);
             this.Controls.Add(this.screenshotButton);
-            this.Controls.Add(this.minimizeButton);
-            this.Controls.Add(this.fullScreenButton);
-            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.menuButton);
             this.Controls.Add(this.chooseFile);
             this.Controls.Add(this.logoAkhmat);
@@ -322,6 +352,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.header)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).EndInit();
             this.tweetInfoPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.loadScreen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -343,6 +375,8 @@
         private System.Windows.Forms.ToolTip gmapToolTip;
         private System.Windows.Forms.ListView chooseFileListView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.PictureBox loadScreen;
+        private System.Windows.Forms.PictureBox logoPictureBox;
     }
 }
 
