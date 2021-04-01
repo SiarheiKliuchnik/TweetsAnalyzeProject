@@ -28,8 +28,8 @@ namespace WindowsFormsApp.Presentation_Layer
             DialogResult result = folderBrowserDialog1.ShowDialog();
             if (!string.IsNullOrWhiteSpace(folderBrowserDialog1.SelectedPath) && result==DialogResult.OK)
             {
-                    pathLabel.Text= folderBrowserDialog1.SelectedPath;
-                    Data.Directory = folderBrowserDialog1.SelectedPath;
+                pathLabel.Text= folderBrowserDialog1.SelectedPath;
+                Data.Directory = folderBrowserDialog1.SelectedPath;
             }
         }
 
@@ -64,6 +64,7 @@ namespace WindowsFormsApp.Presentation_Layer
         {
             tweetPointsCheckBox.Checked = Data.TweetPointsCheckBoxChecked;
             EmotionScaleCheckBox.Checked = Data.EmotionPanelCheckBoxChecked;
+            pathLabel.Text = Data.Directory;
         }
 
         private void tweetPointsCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -74,6 +75,22 @@ namespace WindowsFormsApp.Presentation_Layer
         private void EmotionScaleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             Data.EmotionPanelCheckBoxChecked = EmotionScaleCheckBox.Checked;
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            FileStream fs = new FileStream(@"..\\..\\..\\Data\\settings.cfg", FileMode.Truncate);
+            StreamWriter w = new StreamWriter(fs, Encoding.Default);
+            {
+                string settings = $"{Data.EmotionPanelCheckBoxChecked.ToString()}, {Data.TweetPointsCheckBoxChecked.ToString()}, {Data.Directory}";
+                w.WriteLine(settings);
+            }
+            w.Close();
+            w.Dispose();
+            fs.Close();
+            fs.Dispose();
+            this.Close();
+            this.Dispose();
         }
     }
 }
