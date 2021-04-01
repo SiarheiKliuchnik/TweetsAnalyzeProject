@@ -255,7 +255,7 @@ namespace WindowsFormsApp
                 menuButton.Image = Image.FromFile("../../Presentation Layer/Interface/menuToo1.png");
                 this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
             }
-            chooseFile_Click(sender, e);
+            chooseFileListView.Visible = false;
             chooseFile.Visible = !chooseFile.Visible;
             screenshotButton.Visible = !screenshotButton.Visible;
             getInfoButton.Visible = !getInfoButton.Visible;
