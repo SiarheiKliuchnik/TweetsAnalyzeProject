@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -41,6 +42,8 @@
             this.tweetInfoPanel = new System.Windows.Forms.Panel();
             this.screenshotButton = new System.Windows.Forms.Button();
             this.getInfoButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.gmapToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.header)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).BeginInit();
             this.tweetInfoPanel.SuspendLayout();
@@ -77,6 +80,7 @@
             this.gMapControl.Zoom = 0D;
             this.gMapControl.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gMapControl_OnMarkerClick);
             this.gMapControl.OnPolygonClick += new GMap.NET.WindowsForms.PolygonClick(this.gMapControl_OnPolygonClick);
+            this.gMapControl.OnMarkerEnter += new GMap.NET.WindowsForms.MarkerEnter(this.gMapControl_OnMarkerEnter);
             this.gMapControl.OnPolygonEnter += new GMap.NET.WindowsForms.PolygonEnter(this.gMapControl_OnPolygonEnter);
             this.gMapControl.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
@@ -84,9 +88,9 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(12, 5);
+            this.panel1.Location = new System.Drawing.Point(3, 17);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(264, 41);
+            this.panel1.Size = new System.Drawing.Size(225, 45);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -249,11 +253,29 @@
             this.getInfoButton.UseVisualStyleBackColor = false;
             this.getInfoButton.Click += new System.EventHandler(this.getInfoButton_Click);
             // 
+            // settingsButton
+            // 
+            this.settingsButton.BackColor = System.Drawing.Color.Black;
+            this.settingsButton.FlatAppearance.BorderSize = 0;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsButton.ForeColor = System.Drawing.Color.White;
+            this.settingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.settingsButton.Location = new System.Drawing.Point(78, 179);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(150, 40);
+            this.settingsButton.TabIndex = 17;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.settingsButton.UseVisualStyleBackColor = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1296, 621);
+            this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.getInfoButton);
             this.Controls.Add(this.screenshotButton);
             this.Controls.Add(this.minimizeButton);
@@ -292,6 +314,8 @@
         private System.Windows.Forms.Panel tweetInfoPanel;
         private System.Windows.Forms.Button screenshotButton;
         private System.Windows.Forms.Button getInfoButton;
+        private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.ToolTip gmapToolTip;
     }
 }
 

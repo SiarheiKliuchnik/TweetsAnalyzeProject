@@ -19,4 +19,12 @@ namespace WindowsFormsApp
             Application.Run(new Form1());
         }
     }
+
+    static class Data
+    {
+        public static string Directory { get; set; }
+        public static bool isCheckBoxChecked { get; set; }
+
+
+    }
 }

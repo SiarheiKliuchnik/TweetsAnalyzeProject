@@ -54,7 +54,7 @@ namespace WindowsFormsApp
                 {
                     this.tweets[i].Analyse(this.wordValues, this.anyValuableWords);
                     State state = DetermineState(states, this.tweets[i]);
-                    if (!newStates.ContainsKey(state.Postcode)/*!newStates.Exists(x => x.Postcode.Contains(state.Postcode))*/)
+                    if (!newStates.ContainsKey(state.Postcode))
                     {
                         state.Tweets.Add(this.tweets[i]);
                         if (!float.IsNaN(this.tweets[i].Weight))

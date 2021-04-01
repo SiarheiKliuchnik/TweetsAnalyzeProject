@@ -34,6 +34,7 @@ namespace WindowsFormsApp
             chooseFile.Visible = false;
             screenshotButton.Visible = false;
             getInfoButton.Visible = false;
+            settingsButton.Visible = false;
             SetMaximumWindowsSize();
             this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
             LoadMap("cali_tweets2014.txt");
@@ -124,7 +125,7 @@ namespace WindowsFormsApp
                         GPoint.ToolTip = new GMapRoundedToolTip(GPoint);
                         GPoint.ToolTipText = tweet.Text;
                         GPoint.IsHitTestVisible = true;
-                        GPoint.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                        GPoint.ToolTipMode = MarkerTooltipMode.Never;
                         tweets.Markers.Add(GPoint);
                     }
                 }
@@ -162,7 +163,7 @@ namespace WindowsFormsApp
                 g.DrawRectangle(pen, recs[i]);
                 g.DrawString(Convert.ToString(currentValue - step), new Font("Arial", 8), Brushes.White, (widthOfRec - 2) * i, 18);
             }
-            g.DrawString(Convert.ToString(currentValue)+"+", new Font("Arial", 8), Brushes.White, (widthOfRec - 3) * (grids), 18);
+            g.DrawString(Convert.ToString(currentValue) + "+", new Font("Arial", 8), Brushes.White, (widthOfRec - 3) * (grids), 18);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -255,6 +256,7 @@ namespace WindowsFormsApp
             chooseFile.Visible = !chooseFile.Visible;
             screenshotButton.Visible = !screenshotButton.Visible;
             getInfoButton.Visible = !getInfoButton.Visible;
+            settingsButton.Visible = !settingsButton.Visible;
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -389,7 +391,38 @@ namespace WindowsFormsApp
 
         private void gMapControl_OnPolygonEnter(GMapPolygon item)
         {
-            
+            //if(!float.IsNaN(mapStates[item.Name].Weight))
+            //gmapToolTip.SetToolTip(gMapControl, $"{item.Name}\nTweets: {mapStates[item.Name].Tweets.Count}\nWeight: {mapStates[item.Name].Weight.ToString()}");
+            //else gmapToolTip.SetToolTip(gMapControl, $"{item.Name}\nTweets: {mapStates[item.Name].Tweets.Count}\nWeight: No data");
+        }
+
+        private void gMapControl_OnMarkerEnter(GMapMarker item)
+        {
+            Tweet tweet = new Tweet(item.Position, item.ToolTipText);
+            State state = DetermineState(mapStates, tweet);
+            foreach (var tw in state.Tweets)
+            {
+                if (tw.Text == tweet.Text && (tw.Location.Latitude == tweet.Location.Latitude && tw.Location.Longtitude == tweet.Location.Longtitude))
+                {
+                    gmapToolTip.SetToolTip(gMapControl, $"State: {state.Postcode}\nTweet: {tw.Text}\nWeight: {tw.Weight}");
+                }
+            }
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            menuButton_Click(sender, e);
+            SettingsForm sf = new SettingsForm();
+            sf.ShowDialog();
+        }
+
+        private void IsCheckBoxChecked()
+        {
+            if (Data.isCheckBoxChecked)
+            {
+                tweetOverlay.IsVisibile = true;
+            }
+            else tweetOverlay.IsVisibile = false;
         }
     }
 }
