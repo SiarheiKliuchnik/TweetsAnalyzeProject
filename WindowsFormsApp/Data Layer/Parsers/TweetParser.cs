@@ -15,37 +15,38 @@ namespace WindowsFormsApp
         public static List<Tweet> ParseTweets(string path)
         {
             List<Tweet> tweets = new List<Tweet>();
-            try
+            string[] massString = File.ReadAllLines(path);
+            foreach (var str in massString)
             {
-                string[] massString = File.ReadAllLines(path);
-                foreach (var str in massString)
-                {
-                     tweets.Add(GetTweet(str));
-                }
-
-                foreach (var tweet in tweets)
-                {
-                    TextParse(tweet);
-
-                    foreach (var sentence in tweet.sentences)
-                    {
-                        SentenceParser(sentence);
-                    }
-                }
-                return tweets;
+                Tweet tweet = GetTweet(str);
+                if (tweet!=null)
+                tweets.Add(tweet);
             }
-            catch (Exception ex)
+
+            foreach (var tweet in tweets)
             {
-                MessageBox.Show(ex.Message);
-                return null;
+                TextParse(tweet);
+
+                foreach (var sentence in tweet.sentences)
+                {
+                    SentenceParser(sentence);
+                }
             }
+            return tweets;
+
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    return null;
+            //}
         }
 
         private static Tweet GetTweet(string line)
         {
             string[] sentences = line.Split('\t');
-            Tweet tweet = new Tweet(sentences[0].Trim('[', ']'), sentences[2], sentences[3]);
-            return tweet;
+            if (sentences.Length < 3) return null;
+            else 
+                return new Tweet(sentences[0].Trim('[', ']'), sentences[2], sentences[3]);
         }
 
         public static void TextParse(Tweet tweet)
