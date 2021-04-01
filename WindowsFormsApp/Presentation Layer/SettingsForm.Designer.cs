@@ -194,7 +194,6 @@ namespace WindowsFormsApp.Presentation_Layer
             this.saveButton.TabIndex = 25;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // dragPanel
             // 

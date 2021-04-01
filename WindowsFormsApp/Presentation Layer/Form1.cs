@@ -19,7 +19,6 @@ using GMap.NET.WindowsForms.Markers;
 using WindowsFormsApp.Presentation_Layer;
 using System.IO;
 using System.Runtime.InteropServices;
-using WindowsFormsApp.Service_Layer;
 
 namespace WindowsFormsApp
 {
@@ -59,6 +58,7 @@ namespace WindowsFormsApp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //closeButton.Visible = true;
             //LoadListFileNames();
         }
         //private void LoadListFileNames()
@@ -440,7 +440,6 @@ namespace WindowsFormsApp
         {
             menuButton_Click(sender, e);
             SettingsForm sf = new SettingsForm();
-            sf.mainForm = this;
             sf.ShowDialog();
             EmotionPanelCheckBoxChecked();
             TweetPointCheckBoxChecked();
