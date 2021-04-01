@@ -32,6 +32,7 @@ namespace WindowsFormsApp
         public Form1()
         {
             InitializeComponent();
+            LoadingScreenOnOff(false);
             //chooseFileListView.Columns.Add();
             chooseFile.Visible = false;
             screenshotButton.Visible = false;
@@ -147,6 +148,12 @@ namespace WindowsFormsApp
         //    LoadMap(ChooseFileSouceBox.SelectedItem.ToString() + ".txt");
         //}
 
+        private void LoadingScreenOnOff(bool active)
+        {
+            loadScreen.Visible = active;
+            logoPictureBox.Visible = active;
+        }
+
         private void DrawLegend()
         {
             Pen pen = new Pen(Color.Black, 0.002f);
@@ -177,6 +184,8 @@ namespace WindowsFormsApp
 
         private void LoadMap(string path)
         {
+            LoadingScreenOnOff(true);
+            this.Refresh();
             GMapOverlay polysOverlay = new GMapOverlay("polysOverlay");
 
 
@@ -204,6 +213,7 @@ namespace WindowsFormsApp
             
             gMapControl.Overlays.Add(tweetOverlay);
             RefreshMap();
+            LoadingScreenOnOff(false);
         }
 
 
@@ -449,8 +459,9 @@ namespace WindowsFormsApp
 
         private void chooseFileListView_MouseClick(object sender, MouseEventArgs e)
         {
-            LoadMap(chooseFileListView.SelectedItems[0].Text.ToString() + ".txt");
+            string path = chooseFileListView.SelectedItems[0].Text.ToString() + ".txt";
             menuButton_Click(sender, e);
+            LoadMap(path);
         }
 
         private void RefreshMap()
