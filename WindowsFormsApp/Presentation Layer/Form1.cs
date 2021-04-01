@@ -27,13 +27,12 @@ namespace WindowsFormsApp
         GMapOverlay polyOverlay = new GMapOverlay("POLYGONS");
         GMapOverlay tweetOverlay = new GMapOverlay("TWEETS");
         Dictionary<string, State> mapStates = new Dictionary<string, State>();
+        DataBase dataBase = new DataBase();
 
         public Form1()
         {
             InitializeComponent();
             //chooseFileListView.Columns.Add();
-            logoPictureBox.Visible = false;
-            loadScreen.Visible = false;
             chooseFile.Visible = false;
             screenshotButton.Visible = false;
             getInfoButton.Visible = false;
@@ -41,23 +40,9 @@ namespace WindowsFormsApp
             chooseFileListView.Visible = false;
             SetMaximumWindowsSize();
             this.menuButton.Image = (Image)(new Bitmap(menuButton.Image, new Size(18, 18)));
-            LoadMap("cali_tweets2014.txt");
+            dataBase.ParseSentiments();
+            dataBase.ParseJSON();
         }
-
-        private void loadScreenShowClose(bool active)
-        {
-            if (active)
-            {
-                logoPictureBox.Visible = false;
-                loadScreen.Visible = false;
-            }
-            else
-            {
-                logoPictureBox.Visible = true;
-                loadScreen.Visible = true;
-            }
-        }
-
         protected override CreateParams CreateParams
         {
             get
@@ -74,6 +59,12 @@ namespace WindowsFormsApp
         {
             //LoadListFileNames();
         }
+        //private void LoadListFileNames()
+        //{
+        //    Directory.GetFiles(@"..\..\Data Layer\Data", "*.txt").ToList().ForEach(x => ChooseFileSouceBox.Items.Add(Path.GetFileNameWithoutExtension(x)));
+        //    if (ChooseFileSouceBox.Items.Count != 0)
+        //        ChooseFileSouceBox.SelectedIndex = 0;
+        //}
         private void gMapControl1_Load(object sender, EventArgs e)
         {
             gMapControl.MapProvider = GMap.NET.MapProviders.YandexMapProvider.Instance;
@@ -151,6 +142,11 @@ namespace WindowsFormsApp
             MessageBox.Show("TEST");
         }
 
+        //private void Uploadbutton_Click(object sender, EventArgs e)
+        //{
+        //    LoadMap(ChooseFileSouceBox.SelectedItem.ToString() + ".txt");
+        //}
+
         private void DrawLegend()
         {
             Pen pen = new Pen(Color.Black, 0.002f);
@@ -181,14 +177,19 @@ namespace WindowsFormsApp
 
         private void LoadMap(string path)
         {
-            loadScreenShowClose(false);
+            GMapOverlay polysOverlay = new GMapOverlay("polysOverlay");
 
-            GMapOverlay polyOverlay = new GMapOverlay("polyOverlay");
-            DataBase dataBase = new DataBase();
+
+            tweetOverlay.Markers.Clear();
+            polyOverlay.Polygons.Clear();
+            mapStates.Clear();
+            dataBase.ClearStates();
+            dataBase.ParseJSON();
+            dataBase.ClearTweets();
+            gMapControl.Overlays.Clear();
+
 
             dataBase.ParseTweet(@"..\..\Data Layer\Data\" + path);
-            dataBase.ParseSentiments();
-            dataBase.ParseJSON();
             mapStates = dataBase.AnalyseTweets();
             
             gMapControl.MarkersEnabled = true;
@@ -196,20 +197,15 @@ namespace WindowsFormsApp
             List<GMapPolygon> polys = paintStates(mapStates);
             foreach (var poly in polys)
             {
-                polyOverlay.Polygons.Add(poly);
+                polysOverlay.Polygons.Add(poly);
             }
-            gMapControl.Overlays.Add(polyOverlay);
+            gMapControl.Overlays.Add(polysOverlay);
             tweetOverlay = paintTweets(mapStates);
             
             gMapControl.Overlays.Add(tweetOverlay);
-
-            loadScreenShowClose(true);
+            RefreshMap();
         }
 
-        //private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    tweetOverlay.IsVisibile = checkBox1.Checked;
-        //}
 
         private void gMapControl_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
@@ -375,6 +371,7 @@ namespace WindowsFormsApp
         {
             if (chooseFile.Visible)
             {
+                chooseFileListView.Items.Clear();
                 chooseFileListView.Visible = !chooseFileListView.Visible;
                 Directory.GetFiles(@"..\..\Data Layer\Data", "*.txt").ToList().ForEach(x =>
                 chooseFileListView.Items.Add(Path.GetFileNameWithoutExtension(x)));
@@ -446,8 +443,21 @@ namespace WindowsFormsApp
 
         private void chooseFileListView_ItemActivate(object sender, EventArgs e)
         {
+            //LoadMap(chooseFileListView.SelectedItems[0].Text.ToString() + ".txt");
+            //menuButton_Click(sender, e);
+        }
+
+        private void chooseFileListView_MouseClick(object sender, MouseEventArgs e)
+        {
             LoadMap(chooseFileListView.SelectedItems[0].Text.ToString() + ".txt");
             menuButton_Click(sender, e);
+        }
+
+        private void RefreshMap()
+        {
+            double curZoom = gMapControl.Zoom;
+            gMapControl.Zoom += 0.001;
+            gMapControl.Zoom -= 0.001;
         }
     }
 }
