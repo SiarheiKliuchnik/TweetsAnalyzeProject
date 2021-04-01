@@ -91,7 +91,7 @@ namespace WindowsFormsApp.Presentation_Layer
             FileStream fs = new FileStream(@"..\\..\\..\\Data\\settings.cfg", FileMode.Truncate);
             StreamWriter w = new StreamWriter(fs, Encoding.Default);
             {
-                string settings = $"{Data.EmotionPanelCheckBoxChecked.ToString()}, {Data.TweetPointsCheckBoxChecked.ToString()}, {Data.Directory}, {localizationComboBox.SelectedItem}";
+                string settings = $"{Data.EmotionPanelCheckBoxChecked.ToString()}, {Data.TweetPointsCheckBoxChecked.ToString()}, {Data.Directory.Trim()}, {localizationComboBox.SelectedItem}";
                 w.WriteLine(settings);
             }
             w.Close();

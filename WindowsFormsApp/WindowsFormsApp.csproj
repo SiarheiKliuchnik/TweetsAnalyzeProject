@@ -113,6 +113,9 @@
     <EmbeddedResource Include="Presentation Layer\Form1.ru-RU.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation Layer\Form1.ru.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation Layer\SettingsForm.ar.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
