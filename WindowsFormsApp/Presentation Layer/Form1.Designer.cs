@@ -77,7 +77,6 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gmapToolTip.SetToolTip(this.gMapControl, resources.GetString("gMapControl.ToolTip"));
             this.gMapControl.Zoom = 0D;
             this.gMapControl.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gMapControl_OnMarkerClick);
             this.gMapControl.OnPolygonClick += new GMap.NET.WindowsForms.PolygonClick(this.gMapControl_OnPolygonClick);
@@ -90,16 +89,14 @@
             resources.ApplyResources(this.EmotionPanel, "EmotionPanel");
             this.EmotionPanel.BackColor = System.Drawing.Color.Black;
             this.EmotionPanel.Name = "EmotionPanel";
-            this.gmapToolTip.SetToolTip(this.EmotionPanel, resources.GetString("EmotionPanel.ToolTip"));
             this.EmotionPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // header
             // 
-            resources.ApplyResources(this.header, "header");
             this.header.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            resources.ApplyResources(this.header, "header");
             this.header.Name = "header";
             this.header.TabStop = false;
-            this.gmapToolTip.SetToolTip(this.header, resources.GetString("header.ToolTip"));
             this.header.Click += new System.EventHandler(this.header_Click);
             this.header.MouseDown += new System.Windows.Forms.MouseEventHandler(this.header_MouseDown);
             // 
@@ -108,28 +105,25 @@
             resources.ApplyResources(this.logoAkhmat, "logoAkhmat");
             this.logoAkhmat.Name = "logoAkhmat";
             this.logoAkhmat.TabStop = false;
-            this.gmapToolTip.SetToolTip(this.logoAkhmat, resources.GetString("logoAkhmat.ToolTip"));
             this.logoAkhmat.Click += new System.EventHandler(this.logoAkhmat_Click_1);
             // 
             // chooseFile
             // 
-            resources.ApplyResources(this.chooseFile, "chooseFile");
             this.chooseFile.BackColor = System.Drawing.Color.Black;
             this.chooseFile.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.chooseFile, "chooseFile");
             this.chooseFile.ForeColor = System.Drawing.Color.White;
             this.chooseFile.Name = "chooseFile";
-            this.gmapToolTip.SetToolTip(this.chooseFile, resources.GetString("chooseFile.ToolTip"));
             this.chooseFile.UseVisualStyleBackColor = false;
             this.chooseFile.Click += new System.EventHandler(this.chooseFile_Click);
             // 
             // menuButton
             // 
-            resources.ApplyResources(this.menuButton, "menuButton");
             this.menuButton.BackColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.menuButton, "menuButton");
             this.menuButton.FlatAppearance.BorderSize = 0;
             this.menuButton.ForeColor = System.Drawing.Color.White;
             this.menuButton.Name = "menuButton";
-            this.gmapToolTip.SetToolTip(this.menuButton, resources.GetString("menuButton.ToolTip"));
             this.menuButton.UseVisualStyleBackColor = false;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
@@ -140,7 +134,6 @@
             this.closeButton.FlatAppearance.BorderSize = 0;
             this.closeButton.ForeColor = System.Drawing.Color.Transparent;
             this.closeButton.Name = "closeButton";
-            this.gmapToolTip.SetToolTip(this.closeButton, resources.GetString("closeButton.ToolTip"));
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             this.closeButton.MouseLeave += new System.EventHandler(this.closeButton_MouseLeave);
@@ -153,7 +146,6 @@
             this.fullScreenButton.FlatAppearance.BorderSize = 0;
             this.fullScreenButton.ForeColor = System.Drawing.Color.Transparent;
             this.fullScreenButton.Name = "fullScreenButton";
-            this.gmapToolTip.SetToolTip(this.fullScreenButton, resources.GetString("fullScreenButton.ToolTip"));
             this.fullScreenButton.UseVisualStyleBackColor = false;
             this.fullScreenButton.Click += new System.EventHandler(this.fullScreenButton_Click);
             this.fullScreenButton.MouseLeave += new System.EventHandler(this.fullScreenButton_MouseLeave);
@@ -166,7 +158,6 @@
             this.minimizeButton.FlatAppearance.BorderSize = 0;
             this.minimizeButton.ForeColor = System.Drawing.Color.Transparent;
             this.minimizeButton.Name = "minimizeButton";
-            this.gmapToolTip.SetToolTip(this.minimizeButton, resources.GetString("minimizeButton.ToolTip"));
             this.minimizeButton.UseVisualStyleBackColor = false;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
             this.minimizeButton.MouseLeave += new System.EventHandler(this.minimizeButton_MouseLeave);
@@ -178,39 +169,35 @@
             this.tweetInfoPanel.BackColor = System.Drawing.Color.Black;
             this.tweetInfoPanel.Controls.Add(this.EmotionPanel);
             this.tweetInfoPanel.Name = "tweetInfoPanel";
-            this.gmapToolTip.SetToolTip(this.tweetInfoPanel, resources.GetString("tweetInfoPanel.ToolTip"));
             this.tweetInfoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tweetInfoPanel_Paint);
             // 
             // screenshotButton
             // 
-            resources.ApplyResources(this.screenshotButton, "screenshotButton");
             this.screenshotButton.BackColor = System.Drawing.Color.Black;
             this.screenshotButton.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.screenshotButton, "screenshotButton");
             this.screenshotButton.ForeColor = System.Drawing.Color.White;
             this.screenshotButton.Name = "screenshotButton";
-            this.gmapToolTip.SetToolTip(this.screenshotButton, resources.GetString("screenshotButton.ToolTip"));
             this.screenshotButton.UseVisualStyleBackColor = false;
             this.screenshotButton.Click += new System.EventHandler(this.screenshotButton_Click);
             // 
             // getInfoButton
             // 
-            resources.ApplyResources(this.getInfoButton, "getInfoButton");
             this.getInfoButton.BackColor = System.Drawing.Color.Black;
             this.getInfoButton.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.getInfoButton, "getInfoButton");
             this.getInfoButton.ForeColor = System.Drawing.Color.White;
             this.getInfoButton.Name = "getInfoButton";
-            this.gmapToolTip.SetToolTip(this.getInfoButton, resources.GetString("getInfoButton.ToolTip"));
             this.getInfoButton.UseVisualStyleBackColor = false;
             this.getInfoButton.Click += new System.EventHandler(this.getInfoButton_Click);
             // 
             // settingsButton
             // 
-            resources.ApplyResources(this.settingsButton, "settingsButton");
             this.settingsButton.BackColor = System.Drawing.Color.Black;
             this.settingsButton.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.settingsButton, "settingsButton");
             this.settingsButton.ForeColor = System.Drawing.Color.White;
             this.settingsButton.Name = "settingsButton";
-            this.gmapToolTip.SetToolTip(this.settingsButton, resources.GetString("settingsButton.ToolTip"));
             this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
@@ -220,17 +207,16 @@
             // 
             // chooseFileListView
             // 
-            resources.ApplyResources(this.chooseFileListView, "chooseFileListView");
             this.chooseFileListView.BackColor = System.Drawing.Color.Black;
             this.chooseFileListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chooseFileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
+            resources.ApplyResources(this.chooseFileListView, "chooseFileListView");
             this.chooseFileListView.ForeColor = System.Drawing.Color.White;
             this.chooseFileListView.HideSelection = false;
             this.chooseFileListView.MultiSelect = false;
             this.chooseFileListView.Name = "chooseFileListView";
             this.chooseFileListView.Scrollable = false;
-            this.gmapToolTip.SetToolTip(this.chooseFileListView, resources.GetString("chooseFileListView.ToolTip"));
             this.chooseFileListView.UseCompatibleStateImageBehavior = false;
             this.chooseFileListView.View = System.Windows.Forms.View.List;
             this.chooseFileListView.ItemActivate += new System.EventHandler(this.chooseFileListView_ItemActivate);
@@ -247,7 +233,6 @@
             this.loadScreen.BackColor = System.Drawing.Color.Black;
             this.loadScreen.Name = "loadScreen";
             this.loadScreen.TabStop = false;
-            this.gmapToolTip.SetToolTip(this.loadScreen, resources.GetString("loadScreen.ToolTip"));
             this.loadScreen.Click += new System.EventHandler(this.loadScreen_Click);
             // 
             // logoPictureBox
@@ -256,7 +241,6 @@
             this.logoPictureBox.BackColor = System.Drawing.Color.Black;
             this.logoPictureBox.Name = "logoPictureBox";
             this.logoPictureBox.TabStop = false;
-            this.gmapToolTip.SetToolTip(this.logoPictureBox, resources.GetString("logoPictureBox.ToolTip"));
             this.logoPictureBox.Click += new System.EventHandler(this.logoPictureBox_Click);
             // 
             // Form1
@@ -280,7 +264,6 @@
             this.Controls.Add(this.gMapControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
-            this.gmapToolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.header)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoAkhmat)).EndInit();

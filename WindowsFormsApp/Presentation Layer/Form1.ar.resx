@@ -126,7 +126,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="gMapControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1476, 620</value>
+    <value>1476, 669</value>
   </data>
   <data name="EmotionPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 21</value>
@@ -3783,7 +3783,7 @@
     <value>215, 241</value>
   </data>
   <data name="loadScreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-5, 0</value>
+    <value>0, -1</value>
   </data>
   <data name="loadScreen.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
