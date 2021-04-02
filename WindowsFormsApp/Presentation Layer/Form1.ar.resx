@@ -126,7 +126,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="gMapControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1728, 620</value>
+    <value>1476, 620</value>
   </data>
   <data name="EmotionPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 21</value>
@@ -141,7 +141,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="header.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1728, 76</value>
+    <value>1476, 76</value>
   </data>
   <data name="logoAkhmat.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3529,7 +3529,7 @@
 </value>
   </data>
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1699, 2</value>
+    <value>1447, 2</value>
   </data>
   <data name="closeButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -3641,7 +3641,7 @@
 </value>
   </data>
   <data name="fullScreenButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1668, 2</value>
+    <value>1416, 2</value>
   </data>
   <data name="fullScreenButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -3720,7 +3720,7 @@
 </value>
   </data>
   <data name="minimizeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1636, 2</value>
+    <value>1384, 2</value>
   </data>
   <data name="minimizeButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -3735,7 +3735,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tweetInfoPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1733, 80</value>
+    <value>1481, 80</value>
   </data>
   <data name="screenshotButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 126</value>
@@ -3789,7 +3789,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="loadScreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1733, 766</value>
+    <value>1481, 766</value>
   </data>
   <data name="logoPictureBox.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6936,7 +6936,7 @@
 </value>
   </data>
   <data name="logoPictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>735, 278</value>
+    <value>609, 278</value>
   </data>
   <data name="logoPictureBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -6948,7 +6948,7 @@
     <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1728, 764</value>
+    <value>1476, 764</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -11284,6 +11284,9 @@
         ////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////8=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
