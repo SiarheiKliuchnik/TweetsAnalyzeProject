@@ -341,12 +341,25 @@ namespace WindowsFormsApp
 
         private void screenshotButton_Click(object sender, EventArgs e)
         {
-            using (var bmp = new Bitmap(gMapControl.Width, gMapControl.Height))
+            if (Directory.Exists(Data.Directory))
             {
-                 gMapControl.DrawToBitmap(bmp, new Rectangle(0, 0, this.Width, this.Height));
-                 bmp.Save(@"c:\temp\screnshot.png");
+                GetScreenshot();  
+            }
+            else
+            {
+                Directory.CreateDirectory(Data.Directory);
+                GetScreenshot();
             }
             menuButton_Click(sender, e);
+        }
+
+        private void GetScreenshot()
+        {
+            using (var bmp = new Bitmap(gMapControl.Width, gMapControl.Height))
+            {
+                gMapControl.DrawToBitmap(bmp, new Rectangle(0, 0, this.Width, this.Height));
+                bmp.Save(Data.Directory.Trim() +"\\screenshot.png");
+            }
         }
 
         private void tweetInfoPanel_Paint(object sender, PaintEventArgs e)
@@ -378,7 +391,21 @@ namespace WindowsFormsApp
 
         private void getInfoButton_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream(@"c:\temp\info.txt", FileMode.Create);
+            if(Directory.Exists(Data.Directory))
+            {
+                WriteInfo();
+            }
+            else
+            {
+                Directory.CreateDirectory(Data.Directory);
+                WriteInfo();
+            }
+            menuButton_Click(sender, e);
+        }
+
+        private void WriteInfo()
+        {
+            FileStream fs = new FileStream(Data.Directory.Trim()+"\\info.txt", FileMode.Create);
             StreamWriter w = new StreamWriter(fs, Encoding.Default);
             foreach (var state in mapStates.Values)
             {
@@ -389,21 +416,20 @@ namespace WindowsFormsApp
                 }
                 else w.WriteLine($"{state.Postcode} (No data):");
                 foreach (var tweet in state.Tweets)
+                {
+                    if (!float.IsNaN(tweet.Weight))
                     {
-                        if (!float.IsNaN(tweet.Weight))
+                        w.WriteLine(tweet.Weight.ToString() + " | " + tweet.Text);
+                        w.Write("Valuable words or phrases: ");
+                        for (int i = 0; i < tweet.valueableWords.Count - 1; i++)
                         {
-                            w.WriteLine(tweet.Weight.ToString() + " | " + tweet.Text);
-                            w.Write("Valuable words or phrases: ");
-                            for (int i = 0; i < tweet.valueableWords.Count - 1; i++)
-                            {
-                                w.Write(tweet.valueableWords[i] + ", ");
-                            }
-                            w.WriteLine(tweet.valueableWords[tweet.valueableWords.Count - 1] + ".");
+                            w.Write(tweet.valueableWords[i] + ", ");
                         }
+                        w.WriteLine(tweet.valueableWords[tweet.valueableWords.Count - 1] + ".");
                     }
+                }
                 w.WriteLine();
             }
-            menuButton_Click(sender, e);
         }
 
         private void gMapControl_OnPolygonEnter(GMapPolygon item)
@@ -433,8 +459,20 @@ namespace WindowsFormsApp
             sf.ShowDialog();
             EmotionPanelCheckBoxChecked();
             TweetPointCheckBoxChecked();
+            //////////////////////////////
+            //var manager = new ComponentResourceManager(typeof(Form1));
+            //ApplyResources(this, manager);
+
         }
 
+        private void ApplyResources(Control ctrl, ComponentResourceManager manager)
+        {
+            manager.ApplyResources(ctrl, ctrl == this ? "$this" : ctrl.Name);
+            foreach (Control child in ctrl.Controls)
+            {
+                ApplyResources(child, manager);
+            }
+        }
         private void EmotionPanelCheckBoxChecked()
         {
             EmotionPanel.Visible = Data.EmotionPanelCheckBoxChecked;
