@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
 using WindowsFormsApp;
+using System.Threading;
+using System.Globalization;
+
 namespace WindowsFormsApp.Presentation_Layer
 {
     public partial class SettingsForm : Form
@@ -74,6 +77,15 @@ namespace WindowsFormsApp.Presentation_Layer
             EmotionScaleCheckBox.Checked = Data.EmotionPanelCheckBoxChecked;
             pathLabel.Text = Data.Directory;
             localizationComboBox.SelectedItem = System.Globalization.CultureInfo.CurrentUICulture;
+
+            string line;
+            using (StreamReader sr = new StreamReader(@"..\\..\\..\\Data\\settings.cfg", Encoding.Default))
+            {
+                line = sr.ReadLine();
+            }
+            string[] items = line.Split(',');
+            localizationComboBox.SelectedItem = items[3].Trim();
+           
         }
 
         private void tweetPointsCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -100,6 +112,20 @@ namespace WindowsFormsApp.Presentation_Layer
             fs.Dispose();
             this.Close();
             this.Dispose();
+
+            //var manager = new ComponentResourceManager(typeof(Form1));
+            //ApplyResources(this, manager);
         }
+
+        private void ApplyResources(Control ctrl, ComponentResourceManager manager)
+        {
+            manager.ApplyResources(ctrl, ctrl == this ? "$this" : ctrl.Name);
+            foreach (Control child in ctrl.Controls)
+            {
+                ApplyResources(child, manager);
+            }
+        }
+
+
     }
 }

@@ -118,6 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="gMapControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 39</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="gMapControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="gMapControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1728, 620</value>
+  </data>
+  <data name="EmotionPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="EmotionPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="EmotionPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 55</value>
+  </data>
+  <data name="header.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="header.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1728, 76</value>
+  </data>
   <data name="logoAkhmat.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAe4AAAHbCAIAAACCwu4fAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -3262,6 +3287,24 @@
         EQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="logoAkhmat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 2</value>
+  </data>
+  <data name="logoAkhmat.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="logoAkhmat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 70</value>
+  </data>
+  <data name="chooseFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 76</value>
+  </data>
+  <data name="chooseFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="chooseFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 49</value>
+  </data>
   <data name="chooseFile.Text" xml:space="preserve">
     <value>اختر ملف</value>
   </data>
@@ -3282,6 +3325,15 @@
         vhVaijvolnNo5E97WVqKA/g317EJdn0StBSTEd6rwttBeGrfiymwa5OhZS60zIWWudAyF1rmQstcaJkL
         LXOhZS60zENn5DerZG8geDOgdAAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="menuButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 7</value>
+  </data>
+  <data name="menuButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="menuButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 64</value>
   </data>
   <data name="menuButton.Text" xml:space="preserve">
     <value>القائمة</value>
@@ -3476,6 +3528,15 @@
         y3/7EOIAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1699, 2</value>
+  </data>
+  <data name="closeButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 31</value>
+  </data>
   <data name="fullScreenButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAApoAAAKaCAYAAACeDPn/AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -3579,6 +3640,15 @@
         Gev/AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="fullScreenButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1668, 2</value>
+  </data>
+  <data name="fullScreenButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="fullScreenButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 31</value>
+  </data>
   <data name="minimizeButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAApoAAAKaCAYAAACeDPn/AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -3649,14 +3719,77 @@
         AACrjAAAsMoIAACrjAAAsMoIAACbj77wv1rfaX3f3HdLAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="minimizeButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1636, 2</value>
+  </data>
+  <data name="minimizeButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="minimizeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 31</value>
+  </data>
+  <data name="tweetInfoPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 693</value>
+  </data>
+  <data name="tweetInfoPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="tweetInfoPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1733, 80</value>
+  </data>
+  <data name="screenshotButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 126</value>
+  </data>
+  <data name="screenshotButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="screenshotButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 49</value>
+  </data>
   <data name="screenshotButton.Text" xml:space="preserve">
     <value>الحصول على لقطة</value>
+  </data>
+  <data name="getInfoButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 171</value>
+  </data>
+  <data name="getInfoButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="getInfoButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 49</value>
   </data>
   <data name="getInfoButton.Text" xml:space="preserve">
     <value>الحصول على معلومات في .txt</value>
   </data>
+  <data name="settingsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 220</value>
+  </data>
+  <data name="settingsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="settingsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 49</value>
+  </data>
   <data name="settingsButton.Text" xml:space="preserve">
     <value>الإعدادات</value>
+  </data>
+  <data name="chooseFileListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 76</value>
+  </data>
+  <data name="chooseFileListView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="chooseFileListView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 241</value>
+  </data>
+  <data name="loadScreen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-5, 0</value>
+  </data>
+  <data name="loadScreen.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="loadScreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1733, 766</value>
   </data>
   <data name="logoPictureBox.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6801,6 +6934,21 @@
         vRjKmZiYmHq9GMqZmJiYer0YypmYmJh6vRjKmZiYmHq9GMqZmJiYer0YypmYmJh6uaKi/h/nH8EwlRQO
         EQAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="logoPictureBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>735, 278</value>
+  </data>
+  <data name="logoPictureBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="logoPictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 222</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1728, 764</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -11136,6 +11284,12 @@
         ////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////8=
 </value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>533, 394</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>تويتر الاتجاهات</value>
